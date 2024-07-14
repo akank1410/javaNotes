@@ -7,4 +7,6 @@ int[][] a = new int[res.size()][];
 
 reference : https://leetcode.com/problems/insert-interval/submissions/1320723284/
 -------------------------------------------------------------------------------------------
+
+reference :  https://leetcode.com/problems/merge-intervals/submissions/1250201844/
   
