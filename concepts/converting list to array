@@ -4,6 +4,9 @@ List<int[]> res = new ArrayList<>();
 
 int[][] a = res.toArray(new int[res.size()][]);
 
+2d array declaration with size :  int[][] arr = new int[n][2];  //it is necessay to add both dimesion size
+https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1
+
 int[][] a = new int[res.size()][];
 
 length of 1d array : int [] a => int l = a.length;
