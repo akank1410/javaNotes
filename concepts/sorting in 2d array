@@ -1,5 +1,7 @@
 Refer this problem : https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1
 
+
+
 class meeting{
     int pos;
     int start;
@@ -27,5 +29,41 @@ class sortByEnd implements Comparator<meeting>
         else if(a.pos < b.pos) return -1;
 
         return 1;
+    }
+}
+
+class Solution 
+{
+    //Function to find the maximum number of meetings that can
+    //be performed in a meeting room.
+    public static int maxMeetings(int start[], int end[], int n)
+    {
+        ArrayList<meeting> meet = new ArrayList<>();
+        ArrayList<Integer> pos = new ArrayList<>();
+
+        for(int i=0; i<n; i++)
+        meet.add(new meeting(i+1,start[i],end[i]));
+
+        // for(int i=0; i<n; i++)
+        // System.out.println(meet.get(i));
+        
+         Collections.sort(meet, new sortByEnd());
+
+        int idx = 0, c = 1, count =1;
+        pos.add(meet.get(idx).pos);
+        while(idx+c<n)
+        {
+            if(meet.get(idx).end < meet.get(idx+c).start)
+            {
+                idx += c; c=1; count++; pos.add(meet.get(idx).pos);
+            }
+            else c++;
+        }
+
+        // for(int i=0; i<pos.size(); i++)
+        // System.out.print(pos.get(i) + " ");
+        
+
+        return count;
     }
 }
