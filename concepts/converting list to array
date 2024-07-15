@@ -2,11 +2,34 @@ int[][] arr; int[] newInterval;
 
 List<int[]> res = new ArrayList<>();
 
+int[][] a = res.toArray(new int[res.size()][]);
+
 int[][] a = new int[res.size()][];
+
+length of 1d array : int [] a => int l = a.length;
+lenght of 2d array : int[][] a => int r = a.length; int c = a[0].length;
+length of list : List<> l = new ArrayList<>(); : int len = l.size()
 
 
 reference : https://leetcode.com/problems/insert-interval/submissions/1320723284/
 -------------------------------------------------------------------------------------------
 
 reference :  https://leetcode.com/problems/merge-intervals/submissions/1250201844/
+
+
+---------------------------------
+
+How to declare and initialize a 1d array
+
+int[] a = new int[]{1,2,3};
+
+to learn about array and list conversion do:
+1. insert intervals
+2. merge intervals
+
+
+https://leetcode.com/problems/merge-intervals/submissions/1321914761/  (O(n) + nlogn)
+https://leetcode.com/problems/merge-intervals/submissions/1321907908/ (O(n^2) + nlogn)
+https://leetcode.com/problems/merge-intervals/submissions/1321902836/ (O(n^2) + nlogn)
+
   
