@@ -1,0 +1,6 @@
+What is the max value for n to let you answer get accepted for Time Complexity : O(n)
+max. value of n should be 10^7 not more than this.
+
+for instance in this question, 1 <= n <= 10^15
+https://leetcode.com/problems/count-good-numbers/description/
+so here on submitting the code of TC O(n) it will give TLE.
