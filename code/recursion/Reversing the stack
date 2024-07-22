@@ -1,0 +1,39 @@
+Empty the stack and insert the ele at the bottom at each return.
+https://www.geeksforgeeks.org/problems/reverse-a-stack/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=reverse-a-stack
+--------------------------
+
+
+class Solution
+{ 
+    static void insertEleBottom(Stack<Integer> s, int top)
+    {
+        int ele = s.pop();
+        if(s.isEmpty())
+        {
+            s.push(top);
+            s.push(ele);
+            return;
+        }
+        insertEleBottom(s,top);
+        s.push(ele);
+        
+    }
+    
+    static void stc_rev(Stack<Integer> s)
+    {
+        int ele = s.pop();
+        if(s.isEmpty())
+        {
+            s.push(ele);
+            return;
+        }
+        stc_rev(s);
+        
+        insertEleBottom(s,ele);
+    }
+    static void reverse(Stack<Integer> s)
+    {
+        // add your code here
+        stc_rev(s);
+    }
+}
