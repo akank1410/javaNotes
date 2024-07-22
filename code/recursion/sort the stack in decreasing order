@@ -1,0 +1,50 @@
+https://www.geeksforgeeks.org/problems/sort-a-stack/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=socort-a-stack\
+
+Intuition:
+consider the problem of inserting smallest element of the stack at the botton
+and then use this logic for every part of the stack
+--------------
+class GfG {
+    
+    void smallestBeneath(Stack<Integer> s)
+    {
+        int ele1 = s.pop();
+        if(s.isEmpty())
+        {
+            s.push(ele1);
+            return;
+        }
+        
+        if(ele1 < s.peek())
+        {
+            int temp = s.pop();
+            s.push(ele1);
+            ele1 = temp;
+        }
+        smallestBeneath(s);
+        s.push(ele1);
+        
+    }
+    
+    void stc_sort(Stack<Integer> s)
+    {
+        int ele = s.pop();
+        if(s.isEmpty())
+        {
+            s.push(ele);
+            return;
+        }
+        
+        stc_sort(s);
+        s.push(ele);
+        smallestBeneath(s);
+        
+    }
+    
+    public Stack<Integer> sort(Stack<Integer> s) {
+      
+        stc_sort(s);
+        return s;
+
+    }
+}
