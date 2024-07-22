@@ -1,8 +1,12 @@
 Empty the stack and insert the ele at the bottom at each return.
-https://www.geeksforgeeks.org/problems/reverse-a-stack/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=reverse-a-stack
+Code : https://www.geeksforgeeks.org/problems/reverse-a-stack/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=reverse-a-stack
+Video reference : https://www.geeksforgeeks.org/problems/reverse-a-stack/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=reverse-a-stack
 --------------------------
+Intution: Hold all items in cache stack at each function call util the input stack is empty
+Insert all item (held in the cache stack) one by one from the bottom to top.
+Every item is inserted at the bottom
 
-
+-------
 class Solution
 { 
     static void insertEleBottom(Stack<Integer> s, int top)
