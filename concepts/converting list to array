@@ -13,6 +13,32 @@ length of 1d array : int [] a => int l = a.length;
 lenght of 2d array : int[][] a => int r = a.length; int c = a[0].length;
 length of list : List<> l = new ArrayList<>(); : int len = l.size()
 
+-> DECLARE & INITIAIZE 1-D ARRAY IN JAVA
+int[] myArr = new int[]{1, 2, 3};
+
+-> DECLAER & INITIALIZE A N*M ARRAY IN JAVA
+int[][] arr = new int[5][3];
+
+-> When initializing a 2D array, 
+  specifying first dimension is necessary (no. of columns)
+  but providing the second dimesion (no. of columns) may be omitted
+
+import java.io.*; 
+  
+class GFG { 
+    public static void main(String[] args) 
+    { 
+        // The line below will throw an error, as the first 
+        // dimension(no. of rows) is not specified 
+        int[][] arr = new int[][3]; 
+  
+        // The line below will execute without any error, as 
+        // the first dimension(no. of rows) is specified 
+        int[][] arr = new int[2][]; 
+    } 
+}
+
+https://www.geeksforgeeks.org/different-ways-to-declare-and-initialize-2-d-array-in-java/
 
 reference : https://leetcode.com/problems/insert-interval/submissions/1320723284/
 -------------------------------------------------------------------------------------------
