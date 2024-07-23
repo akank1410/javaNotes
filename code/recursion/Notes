@@ -1,0 +1,9 @@
+1. STACKOVER FLOW:
+It occurs when numerous function calls are waiting due to recursion.
+Because you call the recursive function, so one function call is waiting for the another function call and so
+
+Stack space is the space where the remaining non-executed functions, not completed functions are stored/
+
+2. Recursion : When a function calls itself, until a specified condition is met
+
+3. Recursion Treess
