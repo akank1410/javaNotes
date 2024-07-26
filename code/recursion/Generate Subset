@@ -1,0 +1,48 @@
+Question link: https://leetcode.com/problems/subsets/
+
+POR (Points to remember)
+
+1. While pushing one list to another create a new list and initialize it with existing list and then push it to the list of list
+This is omit the chance of changes in the pushed list later.
+
+2. 
+give list : lis
+u have to push in res which is list of list
+
+two ways u can do it =>
+
+List<Integer> l = new ArrayList<>(lis);
+res.add(l);
+
+OR
+
+res.add(new ArrayList<>(lis));
+
+
+---------------------
+
+
+class Solution {
+
+    void sub(int[] arr, int idx, int n, List<Integer> l, List<List<Integer>> res )
+    {
+        if(idx == n)
+        {
+            res.add(new ArrayList<Integer>(l));
+            return;
+        }
+
+        sub(arr, idx+1, n, l, res);
+        l.add(arr[idx]);
+        sub(arr, idx+1, n, l, res);
+        l.remove(l.size()-1);
+    }
+    public List<List<Integer>> subsets(int[] nums) {
+
+        List<List<Integer>> res = new ArrayList<>();
+
+        sub(nums, 0, nums.length, new ArrayList<Integer>(), res);
+        return res;
+        
+    }
+}
