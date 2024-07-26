@@ -1,0 +1,30 @@
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    static void binary(int idx, int n, String s, List<String> r)
+    {
+        if(idx == n)
+        {
+            r.add(s);
+            return;
+        }
+
+        binary(idx+1, n, s+"0", r);
+        binary(idx+1, n, s+"1", r);
+    }
+
+    public static void main(String args[]) {
+      
+      List<String> res = new ArrayList<>();
+      int n = 5;
+
+      binary(0, n, "", res);
+
+      for(String s : res)
+        System.out.println(s + " ");
+    }
+}
