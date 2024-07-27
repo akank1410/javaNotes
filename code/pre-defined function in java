@@ -1,0 +1,8 @@
+1. reverse a list,Arraylist;
+https://www.geeksforgeeks.org/java-program-to-reverse-a-list/
+
+ArrayList<Integer> l = new ArrayList<>();
+List<Integer> lis = new ArrayList<>();
+
+Collections.reverse(l);
+Collections.reverse(lis);
