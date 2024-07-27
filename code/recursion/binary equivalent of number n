@@ -1,0 +1,17 @@
+
+
+public class Main {
+
+    static void binary_equi(int n)
+    {
+        if(n==0) return;
+
+        binary_equi(n/2);
+        System.out.print(n%2);
+    }
+
+    public static void main(String args[]) {
+        
+        binary_equi(8);
+    }
+}
