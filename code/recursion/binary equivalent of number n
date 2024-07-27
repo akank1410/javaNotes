@@ -1,5 +1,12 @@
+initution:
 
+when we write decimal to binary conversion what we do
 
+we divide the number by 2 and store its remainder
+again we divide it by 2 & store its remainder 
+this process goes on till we get a 0 as the number
+then at the end we reverse teh string we receive
+-----
 public class Main {
 
     static void binary_equi(int n)
