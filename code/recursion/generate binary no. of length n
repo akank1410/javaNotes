@@ -4,7 +4,7 @@ public class Main {
 
     static void binary(int idx, int n, String s,  List<String> lis)
     {
-        if(idx == n+1)
+        if(idx == n)
         {
             lis.add(s);
             return;
