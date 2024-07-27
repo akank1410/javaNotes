@@ -1,0 +1,31 @@
+https://www.geeksforgeeks.org/generate-binary-strings-without-consecutive-1s/?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=generate-binary-strings-without-consecutive-1s
+
+----------------------------------------------------------------------------------------------------------
+import java.util.*;
+public class Main {
+
+    static void binary(int idx, int n, String s,  List<String> lis)
+    {
+        if(idx == n)
+        {
+            lis.add(s);
+            return;
+        }
+
+        if(s.charAt(s.length()-1) != '1')
+            binary(idx+1, n, s+"1", lis);
+        binary(idx+1, n, s+"0", lis);
+    }
+
+    public static void main(String args[]) {
+        
+        int n = 4;
+        List<String> res = new ArrayList<>();
+
+        binary(1,n, "0", res);
+        binary(1,n, "1", res);
+
+        for(String s : res)
+        System.out.println(s);
+    }
+}
