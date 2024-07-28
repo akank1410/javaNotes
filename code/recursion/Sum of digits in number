@@ -1,0 +1,41 @@
+Here auxillary space is require 
+But in such situations. whenever we have a simple iterative solution as well.
+iterative solution is always preferred because this recursive solution is going to have
+extra overhead for recursive calls and its also going to have overhead for recursive calls and
+will require memory for extra auxillary memory space.
+------------------------------------------------------------------
+
+TC : O(d) | SC : O(d)
+
+public class Main {
+
+    static int sum (int n)
+    {
+        if(n/10 == 0)
+        return n;
+
+        return n%10 + sum(n/10);
+    }
+
+    public static void main(String args[]) {
+        System.out.println(sum(111902) );
+    }
+}
+
+----------------------------------
+TC : O(d) | SC : O(d)
+
+public class Main {
+
+    static int sum (int n)
+    {
+        if(n <= 9)
+        return n;
+
+        return n%10 + sum(n/10);
+    }
+
+    public static void main(String args[]) {
+        System.out.println(sum(131902) );
+    }
+}
