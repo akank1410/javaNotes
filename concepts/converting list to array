@@ -23,6 +23,12 @@ int[][] arr = new int[5][3];
   specifying first dimension is necessary (no. of columns)
   but providing the second dimesion (no. of columns) may be omitted
 
+-> List<List<Integer>> lis = new ArrayList<>()
+convert this to 
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
 import java.io.*; 
   
 class GFG { 
