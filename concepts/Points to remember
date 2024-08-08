@@ -19,3 +19,9 @@ m1%n + m2%n = (m1+m2)%n
 this is not always true
 for instance here it is not.
 
+Concept 3:
+----------
+
+Integer.MIN_VALUE  => -2147483648
+Integer.MAX_VALUE  =>  2147483647
+
