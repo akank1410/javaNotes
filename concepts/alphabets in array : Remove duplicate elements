@@ -1,0 +1,48 @@
+a to z in an array
+
+use 
+int[] arr = new int[26];
+Arrays.fill(arr, -1);
+
+char c = 'd';
+
+int num = c - 'a'; => 3
+
+-------
+
+import java.util.*;
+public class Main {
+
+    public static void rec(String s, String sub, int idx, int[] arr)
+    {
+        if(idx == s.length())
+        {
+            System.out.println(sub);
+            return;
+        }
+
+        int c = s.charAt(idx) - 'A';
+        System.out.println(s.charAt(idx) + " :: " + c + " || " + (c+26));
+
+        if(arr[c] == -1) 
+        {
+            sub += s.charAt(idx);
+            arr[c] += 1;
+        }
+
+        rec(s, sub, idx+1, arr);
+    }
+
+    public static void main(String args[]) {
+
+    // remove dupicate elements
+    
+    int []arr = new int[26];
+    Arrays.fill(arr, -1);
+
+    //String s = "abbccda";
+     String s = "ABBCCDA";
+    rec(s, "", 0, arr);
+    
+        }
+}
