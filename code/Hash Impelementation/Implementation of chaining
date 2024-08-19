@@ -1,0 +1,41 @@
+https://www.geeksforgeeks.org/batch/dsa-to-dev-batch-2-2-390-july/track/DSASP-Hashing/video/MTAwOA%3D%3D
+
+
+import java.util.*;
+
+class MyHash
+{
+    int Bucket;
+    ArrayList<LinkedList<Integer>> table;
+    MyHash(int b)
+    {
+        Bucket = b;
+        table = new ArrayList<LinkedList<Integer>>();
+        for(int i=0; i<b; i++)
+        table.add(new LinkedList<Integer>());
+    }
+    void insert(int key) {
+        int i=key%Bucket;
+        table.get(i).add(key);
+    }
+    boolean search(int key) {
+        int i = key%Bucket;
+        return table.get(i).contains(key);
+    }
+
+    void remove(int key) {
+        int i=key%Bucket;
+
+        // the remove function has 2 version 1. index 2. object
+        //so here i have type casted it 
+        // so that it take it as a object not index
+        // other wise i have to delete 71 value but it will take it as index 71
+        table.get(i).remove((Integer)i);
+    }
+}
+
+public class Main {
+    public static void main(String args[]) {
+        System.out.println("Hello World!");
+    }
+}
