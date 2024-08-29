@@ -1,0 +1,20 @@
+About cache memory
+1. It is a form RAM (random access memory) that stores recently accessed data for quick retrieval.
+2. It sits between CPU and RAM, acting as an intermediary for faster data access.
+3. Cache memory is a hardware or software component that stores data so that it can be accessed faster in the future. 
+   It's a vital part of computer systems that improves performance by reducing the need to access main memory multiple times for the same data or instruction set.
+4. Here's how cache memory works: 
+  Location :  Cache memory is located between the main RAM and the CPU, closer to the processor core. 
+  Data  : Cache memory stores copies of data from frequently used main memory locations, such as the result of an earlier computation or data stored elsewhere.
+  Speed : Cache memory is smaller and faster than main memory, so it can access data more quickly. 
+  Levels : Cache memory exists in three levels: L1, L2, and L3. 
+            Level 1 is usually built into the processor and stores recently used data that's likely to be requested again soon. 
+            Level 2 and Level 3 are usually external components that store additional information that the processor might need to run efficiently. 
+            Level 1 is the fastest, but Level 2 and Level 3 still provide quick access. 
+
+Cache memory can also be used in other types of software, such as: 
+#Browsers: Cache remembers parts of pages, like images, so they open faster when you visit the site again. 
+#Operating systems: Cache stores commonly used instructions and files. 
+#Content delivery networks: Cache information on the server side to deliver websites faster. 
+#Domain name systems: Cache information used to convert domain names to Internet Protocol addresses. 
+#Databases: Cache can reduce latency in database queries. 
