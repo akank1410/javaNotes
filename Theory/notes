@@ -31,3 +31,7 @@ More details about implementing hashing via hashtable, hashmap, linked hashmap; 
 https://www.geeksforgeeks.org/batch/dsa-to-dev-batch-2-2-390-july/track/DSASP-Hashing/article/MjMxNg%3D%3D
 
 => A hash function takes a message of arbitrary length and generates a fixed length code.
+=> "A hash function may give the same hash value for distinct messages."
+      [This situation is known as a "collision." In a well-designed hash function, collisions are rare, 
+      but they are theoretically possible because a hash function maps an infinite number of possible inputs to a finite number of possible outputs 
+      (e.g., with a fixed-length hash code).]
