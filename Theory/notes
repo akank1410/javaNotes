@@ -18,3 +18,11 @@ Cache memory can also be used in other types of software, such as:
 #Content delivery networks: Cache information on the server side to deliver websites faster. 
 #Domain name systems: Cache information used to convert domain names to Internet Protocol addresses. 
 #Databases: Cache can reduce latency in database queries. 
+
+------------------------------------------------------------------------------------------------
+HASHING
+Hashing is the practice of transforming a given key or string of characters into another value for the purpose of security. 
+Unlike standard encryption, hashing is always used for one-way encryption, and hashed values are very difficult to decode.
+
+Encryption is a two-way function where information is scrambled in such a way that it can be unscrambled later. 
+Hashing is a one-way function where data is mapped to a fixed-length value. Hashing is primarily used for authentication.
