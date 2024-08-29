@@ -29,3 +29,5 @@ Hashing is a one-way function where data is mapped to a fixed-length value. Hash
 
 More details about implementing hashing via hashtable, hashmap, linked hashmap; etc
 https://www.geeksforgeeks.org/batch/dsa-to-dev-batch-2-2-390-july/track/DSASP-Hashing/article/MjMxNg%3D%3D
+
+=> A hash function takes a message of arbitrary length and generates a fixed length code.
