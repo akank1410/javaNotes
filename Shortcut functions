@@ -1,0 +1,17 @@
+1. Integer.bitCount(num)  : count number of 1's in binary equivalent pf num
+https://www.geeksforgeeks.org/java-integer-bitcount-method/
+
+Application: Hamming Distance (https://leetcode.com/problems/hamming-distance/solutions/94698/java-1-line-solution-d/)
+
+public class Solution {
+    public int hammingDistance(int x, int y) {
+        return Integer.bitCount(x ^ y);
+    }
+}
+
+
+2. Shift operator
+
+left shift :  a << 2; for num = 2 => O/P : 8 (add 2 zeros to the right
+right shift : a >> 2;for num = 2 => O/P : 0 (remove 2 elements from the end)
+https://www.geeksforgeeks.org/shift-operator-in-java/
