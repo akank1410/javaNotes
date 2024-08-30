@@ -1,0 +1,38 @@
+Collision Handling
+
+=> If we know key in advance, then we can perform hashing.
+=> If we do not know keys, then we use one of the followinf
+ - Chaining (Here we make a chain of colliding items)
+ - Open Addressing
+                  - Linear Probling
+                  - Quadratic Probing
+                  - Double Hashing
+
+In OA, we use the same array & if a position is occupied, we try to put the key in some other slot.
+
+CHAINING
+---------
+We maintain an array of Linked List.
+
+m = No. of slots in Hash Table
+n = No. of keys to be inserted
+
+load factor (alpha) = n/m
+
+Expected Chain Length = alpha
+
+Expected Time to Search = O(1+alpha)
+Expected Time to Insert/Delete = O(1+alpha)
+
+Data Structures for Storing Chains
+-> LinkedList (dis adv. Linked List is not cache friendly bcoz nodes are at different location 
+| it uses extra space for storing next references or pointers)
+T.C. = Search O(l), Delete O(l), Insert O(l)
+
+-> Dynamic Size Array ( vector in c++, arrayList in Java, List in Python)
+Adv. Cache friendly
+T.C. = Search O(l), Delete O(l), Insert O(l)
+
+-> Self Balancing BST (AVL Tree, Red Black Tree)
+Dis Adv. Not cache freindly
+T.C. = Search O(log n), Delete O(log n), Insert O(log n)
