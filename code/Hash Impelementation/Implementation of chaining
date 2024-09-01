@@ -1,6 +1,11 @@
 https://www.geeksforgeeks.org/batch/dsa-to-dev-batch-2-2-390-july/track/DSASP-Hashing/video/MTAwOA%3D%3D
 
+Separate chaining technique in hashing allows to us to use a linked list at each hash slot to 
+handle the problem of collisions.
+That is, every slot of the hash table is a linked list, so whenever a collision occurs, the element
+can be appened as a node to the linked list at the slot.
 
+-------------------------------------------------------------------------------------
 import java.util.*;
 
 class MyHash
