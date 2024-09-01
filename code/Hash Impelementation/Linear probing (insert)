@@ -1,0 +1,41 @@
+https://www.geeksforgeeks.org/batch/dsa-to-dev-batch-2-2-390-july/track/DSASP-Hashing/problem/linear-probing-in-hashing-1587115620
+
+
+class Solution{
+    //Function to fill the array elements into a hash table 
+    //using Linear Probing to handle collisions.
+    boolean insert(int hash_size, int curr_cap, int key, int hmap[])
+    {
+        if(curr_cap == hash_size) return false;
+        
+        int i = key%hash_size;
+        
+        while(hmap[i] != -1 && hmap[i]!= key)
+        {
+            i = (i+1)%hash_size;
+        }
+        
+        if(hmap[i] == key) return false;
+        
+        hmap[i] = key;
+        return true;
+    }
+    
+    int[] linearProbing(int hash_size, int arr[], int sizeOfArray)
+    {
+        //Your code here
+        int[] hmap = new int[hash_size];
+        Arrays.fill(hmap,-1);
+        
+        int cap=0;
+        
+        for(int ele : arr)
+        {
+            if(insert(hash_size, cap, ele, hmap))
+                cap++;
+        }
+      
+        
+        return hmap;
+    }
+}
