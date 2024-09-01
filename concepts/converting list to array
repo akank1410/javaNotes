@@ -26,6 +26,19 @@ int[][] arr = new int[5][3];
 -> List<List<Integer>> lis = new ArrayList<>()
 convert this to 
 
+
+Converting HashMap to arraylist
+
+HashMap<ArrayList<Integer>> to ArrayList<ArrayList<Integer>>
+-->
+HashMap<ArrayList<Integer>> hmap = new HashMap<>();
+
+ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+//res.addAll(hmap.values();
+for(int i=0; i<hashSize();i++)
+{
+  if(hmap.containsKey(i)) res.add(hmap.get(i));
+  else res.add(new ArrayList<>());
 --------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -67,4 +80,36 @@ https://leetcode.com/problems/merge-intervals/submissions/1321914761/  (O(n) + n
 https://leetcode.com/problems/merge-intervals/submissions/1321907908/ (O(n^2) + nlogn)
 https://leetcode.com/problems/merge-intervals/submissions/1321902836/ (O(n^2) + nlogn)
 
+==================================
+
   
+Chaining in hash map
+
+    public ArrayList<ArrayList<Integer>> separateChaining(int arr[], int n, int hashSize)
+    {
+        
+        HashMap<Integer,ArrayList<Integer>> hmap = new HashMap <>();
+        
+        for(int ele : arr)
+        {
+            int i = ele%hashSize;
+            if(hmap.containsKey(i))
+                hmap.get(i).add(ele);
+            else
+                hmap.put(i,new ArrayList<>(Arrays.asList(ele)));
+        }
+        
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        for(int i=0; i<hashSize; i++)
+        {
+            if(hmap.containsKey(i))
+                res.add(hmap.get(i));
+            else
+                res.add(new ArrayList<>());
+        }
+            
+
+        return res;
+        
+    }
+}
