@@ -35,3 +35,65 @@ https://www.geeksforgeeks.org/batch/dsa-to-dev-batch-2-2-390-july/track/DSASP-Ha
       [This situation is known as a "collision." In a well-designed hash function, collisions are rare, 
       but they are theoretically possible because a hash function maps an infinite number of possible inputs to a finite number of possible outputs 
       (e.g., with a fixed-length hash code).]
+
+TRAVERSING A HASHMAP
+
+int arr[] = {1,2,3,4,12,3,4,5,2,5,7,64,1,2,3,4};
+HashMap<Integer, Integer> hmap = new HashMap<>();
+
+for(int ele : arr)
+   hmap.put(ele, hmap.getOrDefault(ele, 0)+1);
+
+System.out.println(hmap);
+System.out.println("METHOD 1");
+for(Map.Entry<Integer, Integer> ele : hmap.entrySet()){
+   int key = ele.getKey();
+   int val = ele.getValue();
+   System.out.println(key + " : " + val);
+}
+
+System.out.println("METHOD 2");
+hmap.forEach((k,v) -> System.out.println(k + " : " + (v + 10)));
+
+System.out.println("METHOD 3");
+Iterator hmIterator = hmap.entrySet().iterator();
+while(hmIterator.hasNext()){
+   Map.Entry mapEle = (Map.Entry)hmIterator.next();
+   int val = ((int)mapEle.getValue() + 10);
+   System.out.println(mapEle.getKey() + " : " + val);
+}
+
+OUTPUT:
+{64=1, 1=2, 2=3, 3=3, 4=3, 5=2, 7=1, 12=1}
+METHOD 1
+64 : 1
+1 : 2
+2 : 3
+3 : 3
+4 : 3
+5 : 2
+7 : 1
+12 : 1
+METHOD 2
+64 : 11
+1 : 12
+2 : 13
+3 : 13
+4 : 13
+5 : 12
+7 : 11
+12 : 11
+METHOD 3
+64 : 11
+1 : 12
+2 : 13
+3 : 13
+4 : 13
+5 : 12
+7 : 11
+12 : 11
+
+
+
+
+------------------------------------------------------------------------------------------------------------
