@@ -98,6 +98,38 @@ class Solution {
     }
 }
 
+-------------------------------------------------------------------------------------------------------------------------------
+SYNTAX 3 : 
+
+class Solution {
+    // Function to sort the array according to frequency of elements.
+    public ArrayList<Integer> sortByFreq(int arr[]) {
+        // add your code here
+        HashMap<Integer,Integer> hmap = new HashMap<>();
+        ArrayList<Integer> res = new ArrayList<>();
+        
+        for(int ele:arr){
+            res.add(ele);
+            hmap.put(ele, hmap.getOrDefault(ele, 0)+1);
+        }
+        
+        
+        Collections.sort(res, new Comparator<Integer>() {
+            
+            public int compare(Integer a, Integer b){
+                int f1 = hmap.get(a);
+                int f2 = hmap.get(b);
+                
+                if(f1!=f2) return f2-f1;
+                else return a-b;
+            }
+        });
+      
+        
+        return res;
+    }
+}
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 METHOD 2: (using heap : O(n log k)
