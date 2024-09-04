@@ -1,0 +1,70 @@
+Reference : https://www.geeksforgeeks.org/comparator-interface-java/
+
+Method 1:
+TC : O(2n + nlog(n))
+class arrange{
+    int key;
+    int val;
+    
+    public arrange(int key, int val)
+    {
+        this.key = key;
+        this.val = val;
+    }
+}
+
+class sortByVal implements Comparator<arrange>
+{
+    public int compare(arrange A, arrange B)
+    {
+        if(A.val < B.val) return 1; //swap when A'freq < B'freq
+        else if(A.val > B.val) return -1;
+        else
+        {
+            if(A.key < B.key) return -1;
+            else 
+            return 1; //this means that swap the object if A'key > B'key
+        }
+        //return B.val - A.val;
+        //return A.val.compareTo(B.val);// -> for string
+    }
+}
+
+class Solution {
+    // Function to sort the array according to frequency of elements.
+    public ArrayList<Integer> sortByFreq(int arr[]) {
+        // add your code here
+        HashMap<Integer,Integer> hmap = new HashMap<>();
+        ArrayList<arrange> m = new ArrayList<>();
+        ArrayList<Integer> res = new ArrayList<>();
+        
+        for(int ele:arr)
+        hmap.put(ele, hmap.getOrDefault(ele, 0)+1);
+        
+        for(Map.Entry<Integer, Integer> map : hmap.entrySet() )
+            m.add(new arrange(map.getKey(), map.getValue()));
+        
+        Collections.sort(m, new sortByVal());
+        
+        for(arrange A : m)
+        {
+            for(int i=0; i<hmap.get(A.key); i++)
+                res.add(A.key);
+        }
+        
+        
+        
+        
+        // {5:2, 4:2, 6:1}
+        // System.out.println(hmap.values() );
+        // System.out.println(hmap.keySet() );
+        
+        
+        
+        return res;
+    }
+}
+
+----------
+
+METHOD 2:
