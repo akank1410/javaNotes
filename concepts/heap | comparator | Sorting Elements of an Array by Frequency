@@ -2,6 +2,11 @@ Reference : https://www.geeksforgeeks.org/comparator-interface-java/
 
 Using comparator interface to sort objects in an ArrayList   
 
+
+Purpose of comparator function : it will tell, what is relative order of 2 element.
+comparator(a,b) 
+-> we should return true if a come after b
+-> we should return false if a come after b
 -------------------------------------------------------------------------------------------------------------------------------
 Method 1:
 TC : O(2n + nlog(n))
