@@ -1,0 +1,83 @@
+Alternated / sub problem: https://www.youtube.com/watch?v=G-EWVGCcL_w
+Number of Zero-Filled Subarrays - Leetcode 2348 - Python
+
+
+Zero Sum Subarrays
+Difficulty: MediumAccuracy: 51.49%Submissions: 131K+Points: 4
+You are given an array arr[] of size n. Find the total count of sub-arrays having their sum equal to 0.
+
+https://www.geeksforgeeks.org/batch/dsa-to-dev-batch-2-2-390-july/track/DSASP-Hashing/problem/zero-sum-subarrays1825
+Examples:
+
+Input: n = 6, arr[] = {0,0,5,5,0,0}
+Output: 6
+Explanation: The 6 subarrays are [0], [0], [0], [0], [0,0], and [0,0].
+Input: n = 10, arr[] = {6,-1,-3,4,-2,2,4,6,-12,-7}
+Output: 4
+Explanation: The 4 subarrays are [-1 -3 4], [-2 2], [2 4 6 -12], and [-1 -3 4 -2 2]
+Expected Time Complexity: O(n*log(n))
+Expected Auxilliary Space: O(n)
+
+
+-----------------------------------------------------------------------------------------------
+
+class Solution{
+    //Function to count subarrays with sum equal to 0.
+    public static long findSubarray(long[] arr ,int n) 
+    {
+        HashMap<Long, Long> hmap = new HashMap<>();
+        long sum = 0L, cnt=0L;
+     
+        hmap.put(0L, 0L);
+        
+        for(int i=0; i<n; i++)
+        {
+            sum += arr[i];
+            if(hmap.containsKey(sum))
+            {
+                cnt += hmap.get(sum)+1L;
+                hmap.put(sum, hmap.get(sum)+1);
+            }
+            else
+                hmap.put(sum, 0L);
+        }
+        
+        return cnt;
+    }
+}
+
+--------------------------------------------------------------------------
+
+
+
+//User function Template for Java
+
+class Solution{
+    //Function to count subarrays with sum equal to 0.
+    public static long findSubarray(long[] arr ,int n) 
+    {
+        HashMap<Long, Long[]> hmap = new HashMap<>();
+        long sum = 0L, cnt=0L;
+     
+        hmap.put(0L, new Long[]{-1L,0L});
+        
+        for(int i=0; i<n; i++)
+        {
+            sum += arr[i];
+            if(hmap.containsKey(sum))
+            {
+                Long[] temp = hmap.get(sum);
+                hmap.put(sum, new Long[]{temp[0], temp[1]+1L});
+                cnt += temp[1]+1L;
+            }
+            else
+                hmap.put(sum, new Long[]{(long)i,0L});
+        }
+        
+        return cnt;
+    }
+}
+
+
+
+
