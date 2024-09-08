@@ -1,0 +1,75 @@
+ public static int[] sortA1ByA2(int A1[], int N, int A2[], int M)
+    {
+       HashMap<Integer, Integer> hmap = new HashMap<>();
+       Integer res[] = new Integer[N];
+       
+       for(int i=0; i<M; i++)
+        hmap.put(A2[i], i+1);
+        
+       for(int i=0; i<N; i++)
+           res[i] = A1[i];
+       
+       Arrays.sort(res, (a,b) -> {
+           int a1 = hmap.getOrDefault(a,0);
+           int b1 = hmap.getOrDefault(b,0);
+           
+           if(a1 == 0 && b1 == 0)
+                return a-b;
+           else if(a1 == 0)
+                return 1;
+           else if(b1 == 0)
+                return -1;
+            else
+                return a1-b1;
+       });
+        
+              return Arrays.stream(res).mapToInt(Integer::intValue).toArray();
+        
+    }
+}
+
+--------------------------------------------------------
+Method 2
+
+  public static int[] sortA1ByA2(int A1[], int N, int A2[], int M)
+    {
+       HashMap<Integer, Integer> hmap = new HashMap<>();
+       int res[] = new int[N];
+       
+       for(int ele : A1)
+       hmap.put(ele, hmap.getOrDefault(ele, 0) + 1);
+       
+       int cnt = 0;
+       
+       for(int ele: A2)
+       {
+           if(hmap.containsKey(ele))
+           {
+               int c = hmap.get(ele);
+               
+               while(c>0)
+               {
+                   res[cnt++] = ele;
+                   c--;
+               }
+               
+               hmap.remove(ele);
+           }
+       }
+       
+       List<Integer> remEle = new ArrayList<>();
+       for(Map.Entry<Integer, Integer> entry : hmap.entrySet())
+       {
+           int ele = entry.getKey();
+           int c = entry.getValue();
+           while(c-- > 0)
+           remEle.add(ele);
+       }
+       
+       Collections.sort(remEle);
+       for(int ele : remEle)
+       res[cnt++] = ele;
+       
+       return res;
+       
+    }
