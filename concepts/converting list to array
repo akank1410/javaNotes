@@ -39,6 +39,29 @@ for(int i=0; i<hashSize();i++)
 {
   if(hmap.containsKey(i)) res.add(hmap.get(i));
   else res.add(new ArrayList<>());
+
+
+--
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+
+public class HelloWorld{
+
+     public static void main(String []args){
+            List<List<String>> stringListList = new ArrayList<>();
+            stringListList.add(Arrays.asList(new String[] {"(0,0)", "(0,1)"} ));
+            stringListList.add(Arrays.asList(new String[] {"(1,0)", "(1,1)", "(1,2)"} ));
+            stringListList.add(Arrays.asList(new String[] {"(2,0)", "(2,1)"} ));
+
+            int count=stringListList.stream().mapToInt(i -> i.size()).sum();
+
+            System.out.println("stringListList count: "+count);
+     }
+}
+
+
 --------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------
 
