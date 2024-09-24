@@ -1,0 +1,4 @@
+Difference between sub-array, subset/subsequence
+
+sub-array : contiguous sequence of element in the array. one element just before the same element as present in array//
+subset/subsequence : contiguous or non-contiguous sequence of array. But order is same as than in array.
