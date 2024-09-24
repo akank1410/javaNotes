@@ -1,0 +1,150 @@
+https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1
+
+Method 1: TLE | TC = O(2^n) | SC = O(N)
+
+//User function Template for Java
+
+class Solution{
+
+    static Boolean res(int[] arr, int idx, int target)
+    {
+        if(target == 0) return true;
+        else if(idx==0)
+        {
+            if(arr[idx] == target) return true;
+            else return false;
+        }
+        
+        return res(arr, idx-1, target) || res(arr, idx-1, target-arr[idx]);
+    }
+
+    static Boolean isSubsetSum(int N, int arr[], int sum){
+        // code here
+        
+        return res(arr, N-1, sum);
+    }
+}
+
+------------
+
+Method 2: Memoization | TC = O(N * [target+1) | SC = O(N) + O(N*[target+1])
+
+//User function Template for Java
+//TC (n*[target+1])
+//SC = O(n) + O(n*[target+1])
+class Solution{
+
+    static Boolean res(int[] arr, int idx, int target, int[][] dp)
+    {
+        if(target == 0) return true;
+        else if(idx==0)
+        {
+            if(arr[idx] == target) return true;
+            else return false;
+        }
+        
+        if(dp[idx][target] != -1) return dp[idx][target]==1;
+        
+        boolean ntake = res(arr, idx-1, target, dp);
+        boolean take = false;
+        if(target >= arr[idx])
+        take = res(arr, idx-1, target-arr[idx], dp);
+        
+        dp[idx][target] = (take || ntake)? 1 : 0;
+        
+        return dp[idx][target]==1;
+    }
+
+    static Boolean isSubsetSum(int N, int arr[], int sum){
+        // code here
+        boolean[][] dp = new boolean[N][sum+1];
+        
+        for(boolean[] a : dp)
+        Arrays.fill(a, false);
+        
+        for(int i=0; i<N; i++) dp[i][0] = true;
+        if(sum >= arr[0]) dp[0][arr[0]] = true;
+        
+        for(int i=1; i<N; i++)
+        {
+            for(int j=1; j<=sum; j++)
+            {
+                boolean ntake = dp[i-1][j];
+                boolean  take = false;
+                if(j>=arr[i])
+                take = dp[i-1][j-arr[i]];
+                
+                dp[i][j] = ntake || take;
+                
+            }
+        }
+        
+        return dp[N-1][sum];
+    }
+}
+
+------------
+
+Method 3: Tabulation | TC = O(N * [target+1) | SC = O(N*[target+1])
+
+class Solution{
+
+    static Boolean isSubsetSum(int N, int arr[], int sum){
+        // code here
+        boolean[] curr = new boolean[sum+1];
+        boolean[] prev = new boolean[sum+1];
+        
+        curr[0] = prev[0] = true;
+        if(sum >= arr[0]) prev[arr[0]]  = true;
+        
+        for(int i=1; i<N; i++)
+        {
+            for(int j=1; j<=sum; j++)
+            {
+                boolean ntake = prev[j];
+                boolean  take = false;
+                if(j>=arr[i])
+                take = prev[j-arr[i]];
+                
+                curr[j] = ntake || take;
+                
+            }
+            prev = Arrays.copyOf(curr, curr.length);
+        }
+        
+        return prev[sum];
+    }
+}
+
+------------
+
+Method 34: Space Optimization| TC = O(N * [target+1) | SC = O([target+1])
+
+class Solution{
+
+    static Boolean isSubsetSum(int N, int arr[], int sum){
+        // code here
+        boolean[] curr = new boolean[sum+1];
+        boolean[] prev = new boolean[sum+1];
+        
+        curr[0] = prev[0] = true;
+        if(sum >= arr[0]) prev[arr[0]]  = true;
+        
+        for(int i=1; i<N; i++)
+        {
+            for(int j=1; j<=sum; j++)
+            {
+                boolean ntake = prev[j];
+                boolean  take = false;
+                if(j>=arr[i])
+                take = prev[j-arr[i]];
+                
+                curr[j] = ntake || take;
+                
+            }
+            prev = Arrays.copyOf(curr, curr.length);
+        }
+        
+        return prev[sum];
+    }
+}
