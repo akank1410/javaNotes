@@ -1,0 +1,50 @@
+https://leetcode.com/problems/partition-equal-subset-sum/description/
+
+Approach:
+1.we have to divide the array in 2 subsequence such that both subsequence have equal sum
+2. it means, if complete array sum is S.
+3. each subsequence sum = S/2
+hence if S%2 != 0 it means no 2 subsequence is there.
+if there is a subsequence in array arr with sum S/2 then it will be true.
+
+
+Method 1: Space optimization
+
+class Solution {
+
+    public boolean canPartition(int[] nums) {
+        
+        int N = nums.length;
+        int sum = 0;
+        for(int ele : nums)
+            sum += ele;
+
+        if(sum%2 != 0) return false;
+        int target = sum/2;
+
+        boolean[] prev = new boolean[target+1];
+        
+        prev[0] = true;
+        
+        if(target >= nums[0])
+        prev[nums[0]] = true;
+
+        for(int i=1; i<N; i++)
+        {
+            boolean[] curr = new boolean[target+1];
+            curr[0] = true;
+            for(int j=1; j<target+1; j++)
+            {
+                boolean ntake = prev[j];
+                boolean take = false;
+                if(j>=nums[i]) take = prev[j-nums[i]];
+
+                curr[j] = ntake || take;
+            }
+            prev = curr;
+        }
+
+        return prev[target];
+        
+    }
+}
