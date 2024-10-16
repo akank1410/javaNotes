@@ -1,0 +1,52 @@
+The Queue interface is implemented by several classes in Java, 
+including => LinkedList, => ArrayDeque, and => PriorityQueue. 
+
+Each of these classes provides different implementations of the queue interface, w
+ith different performance characteristics and features.
+
+Queue<Integer> q = new LinkedList<>();
+Queue<Integer> q = new PriorityQueue<>();
+
+q.poll()  => Removes and returns the element at the front of the queue. If the queue is empty, it returns null.
+q.remove() => Removes and returns the element at the front of the queue. If the queue is empty, it throws an exception.
+
+q.add(obj) => Adds an element to the rear of the queue. If the queue is full, it throws an exception.
+q.offer(obj) => Adds an element to the rear of the queue. If the queue is full, it returns false.
+
+q.element() => Returns the element at the front of the queue without removing it. If the queue is empty, it throws an exception.
+q.peek() => Returns the element at the front of the queue without removing it. If the queue is empty, it returns null.
+
+q.isEmpty() =>
+
+Iterating the Queue:
+--------------------
+PriorityQueue<String> queue = new PriorityQueue<String>();
+Queue<String> queue = new PriorityQueue<String>();
+Queue<String> queue = new LinkedList<String>();
+Object[] arr = queue.toArray();
+
+1. Converting queue to array:
+
+
+// Java program to iterate elements
+// to a Queue
+
+import java.util.*;
+
+public class GFG {
+
+    public static void main(String args[])
+    {
+        Queue<String> pq = new PriorityQueue<>();
+
+        pq.add("Geeks");
+        pq.add("For");
+        pq.add("Geeks");
+
+        Iterator iterator = pq.iterator();
+
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+    }
+}
