@@ -1,0 +1,52 @@
+https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=detect-cycle-in-an-undirected-graph
+
+TC : O(V) + O(V + 2E)
+
+class node{
+	int data;
+	int parent;
+	node(int data, int parent)
+	{
+		this.data = data;
+		this.parent = parent;
+	}
+}
+
+class Solution{
+
+	public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj)
+	{
+		int[] vis = new int[V]; // 
+		Arrays.fill(vis,-1);
+
+		Queue<node> q = new LinkedList<>();
+
+		// O(v) + O(V) + O(V+2E)
+		for(int i=0; i<V; i++)
+		{
+			if(vis[i] == -1)
+			q.offer(new node(i,-1));
+
+		while(!q.isEmpty())
+		{
+		 	node n = q.poll();
+		 	vis[n.data] = 1;
+			
+			for(int ele : adj.get(n.data))
+			{
+				if(vis[ele] != -1 && ele != n.parent)
+				return true;
+				else if(vis[ele] == -1)
+					q.offer(new node(ele, n.data));
+
+			}
+
+		}
+
+		}
+
+		return false;
+	}
+
+
+}
