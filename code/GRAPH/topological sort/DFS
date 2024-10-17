@@ -1,0 +1,85 @@
+Valid only by Acycylic graph
+Valid for bi-directional graph
+
+TC : O(V) + O(V+E)
+SC : O(2V) + O(V)
+
+https://www.geeksforgeeks.org/problems/topological-sort/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=topological-sort
+------------------------------------------------
+class Solution {
+    // Function to return list containing vertices in Topological order.
+    
+	static void dfs(ArrayList<ArrayList<Integer>> adj, int[] vis, int node,  Stack<Integer> stc)
+	{
+		vis[node] = 1;
+
+		for(int ele : adj.get(node))
+		{
+			if(vis[ele] == -1)
+				dfs(adj, vis, ele, stc);
+		}
+
+		stc.push(node);
+
+	}
+	
+    static ArrayList<Integer> topologicalSort(ArrayList<ArrayList<Integer>> adj) {
+        // Your code here
+        int V = adj.size();
+        int[] vis = new int[V];
+        Arrays.fill(vis, -1);
+        Stack<Integer> stc = new Stack<>();
+        ArrayList<Integer> res = new ArrayList<>(V);
+        
+		for(int i=0; i<V; i++)
+		{
+		    if(vis[i] == -1)
+			dfs(adj, vis, i, stc);
+		}
+		
+		while(!stc.isEmpty())
+		{
+		    res.add(stc.pop());   
+		}
+
+		return res;
+    }
+}class Solution {
+    // Function to return list containing vertices in Topological order.
+    
+	static void dfs(ArrayList<ArrayList<Integer>> adj, int[] vis, int node,  Stack<Integer> stc)
+	{
+		vis[node] = 1;
+
+		for(int ele : adj.get(node))
+		{
+			if(vis[ele] == -1)
+				dfs(adj, vis, ele, stc);
+		}
+
+		stc.push(node);
+
+	}
+	
+    static ArrayList<Integer> topologicalSort(ArrayList<ArrayList<Integer>> adj) {
+        // Your code here
+        int V = adj.size();
+        int[] vis = new int[V];
+        Arrays.fill(vis, -1);
+        Stack<Integer> stc = new Stack<>();
+        ArrayList<Integer> res = new ArrayList<>(V);
+        
+		for(int i=0; i<V; i++)
+		{
+		    if(vis[i] == -1)
+			dfs(adj, vis, i, stc);
+		}
+		
+		while(!stc.isEmpty())
+		{
+		    res.add(stc.pop());   
+		}
+
+		return res;
+    }
+}
