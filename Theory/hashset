@@ -193,3 +193,145 @@ The set contains: Person{name='Alice', age=25}
 After removing Alice:
 Person{name='Charlie', age=35}
 Person{name='Bob', age=30}
+
+
+========================================================================
+========================================================================
+
+f you are using a HashSet in place of a PriorityQueue to store Pair objects during Dijkstra's algorithm, you have a couple of fundamental issues to address:
+
+Issues:
+Concurrent Modification Exception: You are modifying the HashSet (hset.add(new Pair(...)) and hset.remove(new Pair(...))) while iterating over it using an iterator (it.hasNext()). This will lead to a ConcurrentModificationException. You cannot modify a collection while iterating over it.
+
+Inefficiency of HashSet: A HashSet does not maintain order, so there is no guarantee that you're processing the node with the smallest distance first. The essence of Dijkstra's algorithm is to always process the node with the smallest known distance next, which is why a PriorityQueue is preferred.
+
+Code Review and Suggestions:
+If you are required to use a HashSet, you need to handle the concurrent modification issue by either:
+
+Collecting the pairs to be removed in a separate collection and then removing them after the iteration finishes.
+Or, avoiding modifications within the loop entirely.
+Let’s modify your code to address this issue.
+
+--
+
+class Pair{
+	int node;
+	int wt;
+
+	Pair(int node, int wt)
+	{
+		this.node = node;
+		this.wt = wt;
+	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if(this == o) return true; //if both references point to the same object
+		if(o == null || getClass() != o.getClass()) return false; // Check if class matches
+		
+		Pair p = (Pair) o ;
+		return p.node == node && p.wt == wt;
+	}
+
+         // Override hashCode to generate hash based on name and age
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(node, wt);
+	}
+}
+
+class Solution
+{
+	ArrayList<Integer> Dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S)
+	{
+		HashSet<Pair> hset = new HashSet<>();
+
+		int[] dis = new int[V];
+		Arrays.fill(dis, (int)1e9);
+		dis[S] = 0;
+
+		hset.add(new Pair(S,0));
+
+		Iterator<Pair> it = hset.iterator();
+
+		while(it.hasNext())
+		{
+			Pair p = it.next();
+			int nodeF = p.node;
+			int wtF = p.wt;
+
+			for(int i=0; i<adj.get(nodeF).size(); i++)
+			{
+				int n = adj.get(nodeF).get(i).get(0);
+				int edgeWt = adj.get(nodeF).get(i).get(1);
+
+				if(wtF + edgeWt < dis[n])
+				{
+					if(dis[n] != (int)1e9)
+						hset.remove(new Pair(n,dis[n]));
+
+					dis[n] = wtF + edgeWt;
+					hset.add(new Pair(n, dis[n]));
+				}
+			}
+		}
+
+		ArrayList<Integer> res = new ArrayList<>();
+
+		for(int ele : dis)
+			res.add(ele);
+		
+		return res;
+
+	}
+
+}
+
+
+Key Fixes:
+Manual Selection of Minimum Pair: Since HashSet doesn’t provide any ordering, we manually select the pair with the smallest weight in each iteration.
+
+Avoiding Concurrent Modification: Instead of modifying the HashSet while iterating, we collect the pairs to be removed (toRemove list) and remove them after finishing the loop.
+
+Why This Approach Works:
+Manual Search: The HashSet doesn’t inherently sort its elements, so we manually find the node with the smallest weight in each iteration.
+
+Removing Safely: The HashSet is modified only outside the iteration, preventing ConcurrentModificationException.
+
+Time Complexity:
+Time Complexity: This solution is less efficient than using a PriorityQueue due to the manual search for the smallest element, which takes 
+𝑂
+(
+𝑉
+)
+O(V) time for each iteration. The total time complexity would be around 
+𝑂
+(
+𝑉
+2
++
+𝐸
+)
+O(V 
+2
+ +E), where 
+𝑉
+V is the number of vertices and 
+𝐸
+E is the number of edges. This is worse than the ideal 
+𝑂
+(
+(
+𝑉
++
+𝐸
+)
+log
+⁡
+𝑉
+)
+O((V+E)logV) time complexity when using a PriorityQueue.
+This code addresses the specific requirement to use HashSet, but keep in mind that using PriorityQueue would be significantly more efficient for Dijkstra's algorithm.
+
