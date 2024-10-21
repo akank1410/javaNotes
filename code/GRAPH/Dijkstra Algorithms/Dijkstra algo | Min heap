@@ -1,0 +1,54 @@
+https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
+
+TC :  (E+V)log V
+SC : 
+
+
+/*
+class iPair {
+    int first, second;
+
+    iPair(int first, int second) {
+        this.first = first;
+        this.second = second;
+    }
+}
+*/
+
+// User function Template for Java
+class Solution{
+
+	ArrayList<Integer> dijkstra(ArrayList<ArrayList<iPair>> adj, int src)
+		{
+			int V = adj.size();
+			int[] dis = new int[V];
+			Arrays.fill(dis, (int)1e9);
+			dis[src] = 0;
+
+			PriorityQueue<iPair> pq = new PriorityQueue<>((a,b)->a.second-b.second);
+			pq.offer(new iPair(src,0));
+
+			while(!pq.isEmpty())
+			{
+				int node = pq.peek().first;
+				int dist = pq.peek().second;
+				pq.remove();
+
+				for(int i=0; i<adj.get(node).size(); i++)
+				{
+					int edgeWt = adj.get(node).get(i).second;
+					int nei = adj.get(node).get(i).first;
+					
+					if(edgeWt + dist < dis[nei])
+						{
+							dis[nei] = edgeWt + dist;
+							pq.offer(new iPair(nei, dis[nei]));
+						}
+				}
+			}
+
+			ArrayList<Integer> res = new ArrayList<>(V);
+			for(int ele : dis) res.add(ele);
+			return res;
+		}
+}
