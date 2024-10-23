@@ -1,0 +1,15 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+        System.out.println("Hello World!");
+
+        List<String> s = new ArrayList<>(Arrays.asList("A", "B", "C", "D") ); //initializing arraylist
+
+        int m = 1;
+        char c = (char)(m + 'A');  // char = (char)1 + 'A' //wrong
+        System.out.println(c);
+
+    }
+}
+
+-------------------------------
