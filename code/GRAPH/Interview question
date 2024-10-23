@@ -1,0 +1,57 @@
+import java.util.*;
+
+class Snap
+{
+    String m;
+    List<String> child;
+
+    Snap(String m, List<String> child)
+    {
+        this.m = m;
+        this.child = child;
+    }
+}
+
+public class Main {
+    public static void main(String args[]) {
+        List<String> disk = Arrays.asList("A", "B", "C", "D","E");
+        List<String> res = new ArrayList<>();
+        List<Snap> s =  Arrays.asList(new Snap("A", Arrays.asList("B")), 
+                                      new Snap("B", Arrays.asList("C")), 
+                                      new Snap("D", Arrays.asList()),
+                                      new Snap("A", Arrays.asList("E"))
+                                      );
+
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        HashMap<String, Integer> hmap = new HashMap<>();
+        for(int i=0; i<disk.size(); i++)
+        hmap.put(disk.get(i), i);
+        
+        for(int i=0; i<disk.size(); i++)
+            adj.add(i, new ArrayList<>());
+
+        for(int i=0; i<s.size(); i++)
+        {
+            int p = hmap.get(s.get(i).m);
+            for(String s1 : s.get(i).child)
+            {
+                adj.get(p).add(hmap.get(s1));
+            }
+        }
+
+        for(int i=0; i<disk.size(); i++)
+        {
+            System.out.print(i + " " + disk.get(i) + " -> " );
+
+            if(adj.get(i).isEmpty())
+            System.out.println(" Node Edge");
+            else
+            {
+                for(int a : adj.get(i))
+                System.out.print(a + " " + disk.get(a) + " || ");
+
+                System.ou.println();
+            }
+        }
+    }
+}
