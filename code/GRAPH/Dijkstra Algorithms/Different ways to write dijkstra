@@ -1,0 +1,191 @@
+import java.util.*;
+
+class tuple{
+
+	int first;
+	int wt;
+	tuple(int first, int wt)
+	{
+		this.first = first;
+		this.wt = wt;
+	}
+}
+
+class Solution 
+{
+	ArrayList<ArrayList<tuple>> adj;
+	int source;
+
+	Solution(ArrayList<ArrayList<tuple>> adj, int source)
+	{
+		this.adj = adj;
+		this.source = source;
+	}
+
+	public static void Dijkstra(ArrayList<ArrayList<tuple>> adj, int source)
+	{
+		int V = adj.size();
+		int[] dist = new int[V+1];
+		Arrays.fill(dist, (int)1e9);
+		dist[source] = 0;
+
+
+		PriorityQueue<tuple> pq = new PriorityQueue<>((a,b)->a.wt - b.wt);
+		pq.offer(new tuple(source,0));
+
+		while(!pq.isEmpty())
+		{
+			tuple t = pq.poll();
+			int node = t.first;
+			int eWt = t.wt;
+
+			for(tuple adjN : adj.get(node))
+			{
+				if(adjN.wt + eWt < dist[adjN.first])
+				{
+					dist[adjN.first] = adjN.wt + eWt;
+					pq.offer(new tuple(adjN.first, dist[adjN.first]));
+				}
+			}
+		}
+
+		for(int i=0 ;i<V; i++)
+		{
+			System.out.println(i + " : " +(dist[i]==(int)1e9? -1: dist[i]));
+		}
+
+	}
+
+}
+
+
+public class Main{
+
+	public static void main(String args[])
+	{
+		ArrayList<ArrayList<tuple>> a = new ArrayList<>(Arrays.asList(
+		new ArrayList<>(),
+		new ArrayList<>(Arrays.asList(new tuple(2,2), new tuple(5,1))),
+		new ArrayList<>(),
+		new ArrayList<>(Arrays.asList(new tuple(1,4), new tuple(4,2))),
+		new ArrayList<>(),
+		new ArrayList<>(Arrays.asList(new tuple(4,3), new tuple(2,3)))
+		));
+
+		Solution.Dijkstra(a,3);
+
+	}
+}
+
+OUTPUT:
+0 : -1
+1 : 4
+2 : 6
+3 : 0
+4 : 2
+5 : 5
+
+================================================
+
+
+import java.util.*;
+class tuple{
+
+	int first;
+	int wt;
+
+	tuple(int first, int wt)
+	{
+		this.first = first;
+		this.wt = wt;
+	}
+}
+
+class Solution
+{
+
+	public static void Dijkstra()
+	{
+
+		ArrayList<ArrayList<tuple>> adj = new ArrayList<>
+        (Arrays.asList(
+        new ArrayList<>(), 
+        new ArrayList<>(Arrays.asList(new tuple(2,2), new tuple(5,1))), 
+        new ArrayList<>(), 
+        new ArrayList<>(Arrays.asList(new tuple(1,4), new tuple(4,2))), 
+        new ArrayList<>(),
+        new ArrayList<>(Arrays.asList(new tuple(4,3), new tuple(2,3)))
+        ));
+
+		int source = 3;
+		int V = adj.size();
+		int[] dist = new int[V+1];
+		Arrays.fill(dist, (int)1e9);
+		dist[source] = 0;
+
+		PriorityQueue<tuple> q = new PriorityQueue<>((a,b) -> a.wt - b.wt);
+
+		q.offer(new tuple(source,0));
+
+		while(!q.isEmpty())
+		{
+			tuple t = q.poll();
+			int node = t.first;
+			int eWt = t.wt;
+
+			for(tuple adjN : adj.get(node))
+			{
+				if(adjN.wt + eWt < dist[adjN.first])
+				{
+					dist[adjN.first] = adjN.wt + eWt;
+					q.offer(new tuple(adjN.first, dist[adjN.first]));
+				}
+			}
+		}
+
+		for(int i=0; i<V; i++)
+		{
+			if(dist[V] == (int)1e9)
+			dist[V] = -1;
+			System.out.print(i + " : " + dist[i] + " -- ");
+            System.out.println();
+		}
+
+		
+	}
+
+}
+public class Main {
+    public static void main(String args[]) {
+        System.out.println("Hello World!");
+
+        Solution s = new Solution();
+        System.out.println("Calling via class name");
+        Solution.Dijkstra();
+
+        System.out.println("\n -----");
+        System.out.println("Calling via object name");
+        s.Dijkstra();
+    }
+}
+
+
+OUTPUT : 
+Hello World!
+Calling via class name
+0 : 1000000000 -- 
+1 : 4 -- 
+2 : 6 -- 
+3 : 0 -- 
+4 : 2 -- 
+5 : 5 -- 
+
+ -----
+Calling via object name
+0 : 1000000000 -- 
+1 : 4 -- 
+2 : 6 -- 
+3 : 0 -- 
+4 : 2 -- 
+5 : 5 -- 
+
