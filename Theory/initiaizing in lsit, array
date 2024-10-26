@@ -1,0 +1,23 @@
+1. return type int[]
+
+return (new int[]{1,2});
+
+2. return type ArrayList
+
+you can use the Arrays.asList() method to create and initialize a list in one line
+------------------------------------------------------------------------------------
+ArrayList<Integer> fun(int a, int b);
+{
+	return new ArrayList<>();
+}
+
+return new ArrayList<>(Arrays.asList(1,2));
+
+OR
+
+If you want to return an ArrayList with the values 1 and 2, you can do it like this:
+--------------------------------------------------------------------------------------
+ArrayList<Integer> list = new ArrayList<>();
+list.add(1);
+list.add(2);
+return list;
