@@ -119,3 +119,96 @@ class Solution
 		return -1;
 	}
 }
+
+
+------
+Remember that queue is a interface of LinkedList
+WORKING
+
+
+         0  1  2
+arr[] = {2, 5, 7}
+
+cnt = 0
+
+pq 
+(0,3) ~
+(1,6) ~
+(1,15) ~
+(1,21) ~
+(2,12) ~
+(2,30) ~
+(2,42) ~
+(2,30) ~
+(2,42) ~
+(3,24) ~
+(4, 58)
+
+
+ 
+c = 0 | prd = 3
+ele = 2 --> res = 3*2 = 6
+ele = 5 --> res = 3*5 = 15
+ele = 7 --> res = 3*7 = 21
+
+(1,6)
+c = 1 | prd = 6
+ele = 2 --> res = 6*2 = 12
+ele = 5 --> res = 6*5 = 30
+ele = 7 --> res = 6*7 = 42
+
+(1,15)
+c=1 | prd = 15
+ele = 2 --> res = 15*2 = 30
+ele = 5 --> res = 15*5 = 75 F
+ele = 7 --> res = 15*7 = > 55 F
+
+(1,21)
+c=1 | prd = 21
+ele = 2 --> res = 21*2 = 42
+ele = 5 --> res = 21*5 = 105 F
+ele = 7 --> res = 21*7 = > 55 F
+
+(2,12)
+c=2 | prd = 12
+ele = 2 --> res = 12*2 = 24
+ele = 5 --> res = 12*5 = 60 F
+ele = 7 --> res = 12*7 = > 55 F
+
+(2,30)
+c=2 | prd = 12
+ele = 2 --> res = 30*2 = 60 F
+ele = 5 --> res = 30*5 = 150 F
+ele = 7 --> res = 30*7 = > 55 F
+
+(2,42)
+c=2 | prd = 12
+ele = 2 --> res = 42*2 = 60 F
+ele = 5 --> res = 42*5 = 150 F
+ele = 7 --> res = 42*7 = > 55 F
+
+(2, 30)
+c=2 | prd = 12
+ele = 2 --> res = 30*2 = 60 F
+ele = 5 --> res = 30*5 = 150 F
+ele = 7 --> res = 30*7 = > 55 F
+
+(2, 42)
+c=2 | prd = 12
+ele = 2 --> res = 42*2 = 84 F
+ele = 5 --> res = 42*5 = > 55 F
+ele = 7 --> res = 42*7 = > 55 F
+
+(3, 24)
+c=2 | prd = 12
+ele = 2 --> res = 24*2 = 48 F
+ele = 5 --> res = 24*5 = > 55 F
+ele = 7 --> res = 24*7 = > 55 F
+
+(4, 48)
+c=2 | prd = 12
+ele = 2 --> res = 48*2 = > F
+ele = 5 --> res = 48*5 = > 55 F
+ele = 7 --> res = 48*7 = > 55 F
+
+
