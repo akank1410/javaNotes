@@ -1,0 +1,50 @@
+minimum-multiplications-to-reach-end
+
+https://www.geeksforgeeks.org/problems/minimum-multiplications-to-reach-end/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=minimum-multiplications-to-reach-end
+------------------------------------------
+class node
+{
+	int cnt;
+	int p;
+	node(int cnt, int p)
+	{
+		this.cnt = cnt;
+		this.p = p;
+	}
+}
+
+class Solution 
+{
+	final int mod = 100000;
+	int minimumMultiplications(int[] arr, int start, int end)
+	{
+	    if(start == end) return 0;
+	    
+		int[] dist = new int[mod];
+		Arrays.fill(dist, (int)1e9);
+		dist[start] = 0;
+
+		Queue<node> pq = new LinkedList<>();
+		pq.offer(new node(0,start));
+
+		while(!pq.isEmpty())
+		{
+			node n = pq.poll();
+			int product = n.p;
+			int count = n.cnt;
+
+			for(int ele : arr)
+			{
+				int newP = product*ele%mod;
+				if(newP == end) return count+1;
+
+				if(dist[newP] == (int)1e9)
+				{
+					dist[newP] = count+1;
+					pq.offer(new node(dist[newP], newP));
+				}
+			}
+		}
+		return -1;
+	}
+}
