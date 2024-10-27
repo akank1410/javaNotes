@@ -48,3 +48,74 @@ class Solution
 		return -1;
 	}
 }
+
+===================================================================================================================================================
+
+Catch : Figure out what are the node number 
+
+creating distance array => size 10^5
+
+if someone has already reached the  distance and the distance index when u check is no more (int)1e9, then don't re-count. because it is no need to re-calculate it.
+
+You know the steps are increasing by +1 and multiplication is increasing by +1, so queue will automatically store everything in increasing order.
+
+SO we don't need a Priority Queue. Simple queue will do.
+
+So we have totol 10^5 nodes and each node we have n neightbours
+So 
+hypothetical time complexity will be
+O(10^5 * N) => it in reality it will be way lesser than this.
+
+Again we cannot predict the exact time complexity. Because it will depend on the array.
+Because whatever array is given those many numbers you can generate.
+It will completely depend on array
+
+-------------------------------------------------
+
+class node
+{
+	int cnt;
+	int p;
+	node(int cnt, int p)
+	{
+		this.cnt = cnt;
+		this.p = p;
+	}
+}
+
+class Solution 
+{
+	final int mod = 100000;
+	//
+	int minimumMultiplications(int[] arr, int start, int end)
+	{
+	    if(start == end) return 0;
+		int[] dist = new int[mod];
+		Arrays.fill(dist, (int)1e9);
+		dist[start] = 0;
+
+		Queue<node> pq = new LinkedList<>();
+		pq.offer(new node(0,start));
+
+		while(!pq.isEmpty())
+		{
+			node n = pq.poll();
+			int product = n.p;
+			int count = n.cnt;
+
+			for(int ele : arr)
+			{
+				int newP = product*ele%mod;
+
+				if(count+1 < dist[newP])
+				{
+					dist[newP] = count+1;
+
+					if(newP == end) return count+1;
+					pq.offer(new node(dist[newP], newP));
+				}
+			}
+		}
+		return -1;
+	}
+}
