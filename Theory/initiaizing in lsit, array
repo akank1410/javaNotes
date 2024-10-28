@@ -21,3 +21,40 @@ ArrayList<Integer> list = new ArrayList<>();
 list.add(1);
 list.add(2);
 return list;
+
+
+-----------------------------------------------------------------------------------------
+
+Initializing hashset in java
+
+import java.util.*;
+
+HashSet<Integer> hset =  new HashSet<>(Arrays.asList(1,2,3,4,5));
+Or
+Integer[] arr = {5,6,7,8};
+HashSet<Integer> h = new HashSet<>(Arrays.asList(arr));
+
+public class Main {
+    public static void main(String args[]) {
+        System.out.println("Hello World!");
+
+        HashSet<Integer> hset = new HashSet<>(Arrays.asList(1,2,3,4,5));
+
+        Integer arr[] = {7,8,9};
+        HashSet<Integer> h = new HashSet<>(Arrays.asList(arr));
+
+        Iterator<Integer> it = hset.iterator();
+        Iterator<Integer> i = h.iterator();
+
+        while(it.hasNext())
+        {
+            System.out.print(it.next() + " ");
+        }
+        System.out.println();
+
+        while(i.hasNext())
+        {
+            System.out.print(i.next() + " ");
+        }
+    }
+}
