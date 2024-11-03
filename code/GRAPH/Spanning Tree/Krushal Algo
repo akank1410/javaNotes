@@ -1,0 +1,91 @@
+class DisjointSet
+{
+	ArrayList<Integer> size = new ArrayList<>();
+	ArrayList<Integer> parent = new ArrayList<>();
+
+	public DisjointSet(int n)
+	{
+		for(int i=0; i<=n; i++)
+		{
+			size.add(1);
+			parent.add(i);
+		}
+	}
+
+	public int parentU(int node)
+	{
+		if(parent.get(node) == node) return node;
+
+		int ulp = parentU(parent.get(node));
+		parent.set(node,ulp);
+		return parent.get(node);
+	}
+
+	public void unionBySize(int u, int v)
+	{
+		int ulp_u = parentU(u);
+		int ulp_v = parentU(v);
+
+		if(ulp_u == ulp_v) return;
+
+		if(size.get(ulp_u) < size.get(ulp_v))
+		{
+			parent.set(ulp_u, ulp_v);
+			size.set(ulp_v, size.get(ulp_u) + size.get(ulp_v));
+		}
+		else
+		{
+			parent.set(ulp_v, ulp_u);
+			size.set(ulp_u, size.get(ulp_u) + size.get(ulp_v));
+		}
+
+	}
+}
+
+class tuple{
+
+	int wt;
+	int node;
+	int parent;
+	public tuple(int wt, int node, int parent)
+	{
+		this.wt = wt;
+		this.node = node;
+		this.parent = parent;
+	}
+}
+
+class Solution {
+        // u =>   [v,wt]
+	// 0 => { [1,2]
+    static int spanningTree(int V, int E, List<List<int[]>> adj) {
+
+	ArrayList<tuple> ed = new ArrayList<>();
+
+	for(int i=0; i<adj.size(); i++)
+	{
+		for(int[] a : adj.get(i)){
+			ed.add(new tuple(a[1], a[0], i));		}
+	}
+
+	Collections.sort(ed, ((a,b)->a.wt-b.wt)); // O(E log E)
+
+	DisjointSet s = new DisjointSet(V);
+
+	int sum = 0;
+
+  // this loop runs E times  => E * (8+4)apha 
+	for(tuple t : ed)
+	{
+		if(s.parentU(t.node) == s.parentU(t.parent)) // (2*4*alpha)
+		continue;
+		
+		s.unionBySize(t.node, t.parent);  // O(4*alpha)
+
+		sum += t.wt;
+	}
+
+	return sum;
+    }
+
+}
