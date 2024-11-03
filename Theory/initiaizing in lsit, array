@@ -58,3 +58,71 @@ public class Main {
         }
     }
 }
+
+-------------------------------------------------------------------------------
+
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+        
+
+        ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(1,2,3));
+        for(int n : arr)
+        System.out.println(n);
+
+        List<List<Integer>> arr1 = new ArrayList<>(Arrays.asList(
+            Arrays.asList(1,2,3,4), Arrays.asList(5,6,7,8), Arrays.asList(9,2,1,1)
+        ));
+
+        System.out.println("-----");
+        for(int j=0; j<arr1.size(); j++)
+        {
+            for(int i : arr1.get(j))
+            System.out.print(i + " ");
+        System.out.println();
+        }
+
+        System.out.println(" ----------- ");
+        
+        List<List<List<Integer>>> ls = new ArrayList<>(Arrays.asList(
+            Arrays.asList(Arrays.asList(1,2,3), Arrays.asList(4,5,6), Arrays.asList(7,8,9)),
+            Arrays.asList(Arrays.asList(4,1,5), Arrays.asList(7,2,5), Arrays.asList(5,2,7)),
+            Arrays.asList(new ArrayList<>()),
+            Arrays.asList(new ArrayList<>()),
+            Arrays.asList(Arrays.asList(13,53,16), Arrays.asList(7,1,6), Arrays.asList(6,2,6)),
+            Arrays.asList(Arrays.asList(34,3,25), Arrays.asList(71,1,6), Arrays.asList(6,2,6))
+            ));
+
+        for(int i=0; i<ls.size(); i++)
+        { 
+            System.out.print(i + " : " );
+            for(List<Integer> a1 : ls.get(i))
+            {
+                System.out.print(a1 + " ");
+            }
+            System.out.println();
+        }
+
+    }
+}
+
+
+Output : 
+1
+2
+3
+-----
+1 2 3 4 
+5 6 7 8 
+9 2 1 1 
+ ----------- 
+0 : [1, 2, 3] [4, 5, 6] [7, 8, 9] 
+1 : [4, 1, 5] [7, 2, 5] [5, 2, 7] 
+2 : [] 
+3 : [] 
+4 : [13, 53, 16] [7, 1, 6] [6, 2, 6] 
+5 : [34, 3, 25] [71, 1, 6] [6, 2, 6] 
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
