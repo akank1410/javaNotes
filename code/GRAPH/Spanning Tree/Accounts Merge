@@ -1,0 +1,104 @@
+https://leetcode.com/problems/accounts-merge/submissions/1442778179/
+
+class DisjointSet{
+	
+	ArrayList<Integer> size = new ArrayList<>();
+	ArrayList<Integer> parent = new ArrayList<>();
+
+	public DisjointSet(int V)
+	{
+		for(int i=0;i<=V;i++)
+		{
+			size.add(1);
+			parent.add(i);
+		}
+	}
+
+	public int findUPar(int node)
+	{
+		if(parent.get(node) == node) return node;
+
+		int ulp = findUPar(parent.get(node));
+		parent.set(node, ulp);
+		return ulp;
+	}
+
+	public void unionBySize(int u, int v)
+	{
+		int ulp_u = findUPar(u);
+		int ulp_v = findUPar(v);
+
+		if(ulp_u == ulp_v) return;
+
+		if(ulp_u < ulp_v)
+		{
+			parent.set(ulp_v, ulp_u);
+			size.set(ulp_u, size.get(ulp_u) + size.get(ulp_v));
+		}
+		else
+		{
+			parent.set(ulp_u, ulp_v);
+			size.set(ulp_v, size.get(ulp_u) + size.get(ulp_v));
+		}
+	}
+}
+
+class Solution {
+    public List<List<String>> accountsMerge(List<List<String>> accounts) {
+		
+		HashMap<String, Integer> hmap = new HashMap<>();
+		int V = accounts.size();
+		DisjointSet ds = new DisjointSet(V);
+
+		for(int i=0; i<V; i++)
+		{
+            for(int j=1; j<V; j++){
+			String mail = accounts.get(i).get(j);
+			if(hmap.containsKey(mail))
+				ds.unionBySize(i, hmap.get(mail));
+			else
+				hmap.put(mail,i);
+		}}
+
+		List<List<String>> mailMerge = new ArrayList<>();
+		for(int i=0; i<V; i++)
+			mailMerge.add(new ArrayList<>());
+
+		for(Map.Entry<String, Integer> hm : hmap.entrySet())
+		{
+			int node = hm.getValue();
+			String mailId = hm.getKey();
+			int par = ds.findUPar(node);
+
+			mailMerge.get(par).add(mailId);
+		}
+
+		List<List<String>> res = new ArrayList<>();
+		for(int i=0; i<V; i++)
+		{
+			if(mailMerge.get(i).size() == 0) continue;
+
+			Collections.sort(mailMerge.get(i));
+
+			List<String> temp = new ArrayList<>();
+			temp.add(accounts.get(i).get(0));
+
+			for(String s : mailMerge.get(i))
+			temp.add(s);
+
+			res.add(temp);
+		}
+
+		return res;
+
+	}
+}
+
+0 : "johnsmith@mail.com"
+0 : "john_newyork@mail.com"
+1 : "johnsmith@mail.com"
+1 : "john00@mail.com"]
+2 : "Mary","mary@mail.com"
+3 : "johnnybravo@mail.com"
+
+0  1 2 3 
