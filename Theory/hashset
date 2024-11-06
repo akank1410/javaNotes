@@ -335,3 +335,46 @@ log
 O((V+E)logV) time complexity when using a PriorityQueue.
 This code addresses the specific requirement to use HashSet, but keep in mind that using PriorityQueue would be significantly more efficient for Dijkstra's algorithm.
 
+
+-------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+       HashSet<Integer> hset = new HashSet<>(Arrays.asList(1,2,3,4,1));
+    for(int h : hset) 
+        System.out.print(h + " ");
+
+    System.out.println();
+
+    Iterator<Integer> h = hset.iterator();
+
+    while(h.hasNext())
+    {
+	System.out.print(h.next() + " ");
+    }
+
+    System.out.println();
+
+    HashMap<Integer,Integer> hmap = new HashMap<Integer,Integer>()
+    {{put(1,2); put(2,3); put(3,4);}};
+    for(Map.Entry<Integer, Integer> h1 : hmap.entrySet())
+    {
+	System.out.print(h1.getKey() + "  " + h1.getValue() + "\n");
+    }
+
+    System.out.println("------");
+
+    Iterator<HashMap.Entry<Integer,Integer>> it = hmap.entrySet().iterator();
+
+    while(it.hasNext())
+    {
+        HashMap.Entry<Integer, Integer> entry = it.next();
+        System.out.println(entry.getKey() + " " + entry.getValue() + "\n");
+    }
+
+    }
+}
