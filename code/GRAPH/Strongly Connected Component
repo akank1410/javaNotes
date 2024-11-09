@@ -1,0 +1,71 @@
+https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo
+
+class Solution
+{
+	private void dfs(int node, int[] vis, ArrayList<ArrayList<Integer>> adj, Stack<Integer> stc)
+	{
+		vis[node] = 1;
+		
+		for(int ele : adj.get(node))
+		{
+			if(vis[ele] != -1) continue;
+			dfs(ele, vis, adj, stc);
+		}
+
+		stc.push(node);
+	}
+
+	private void dfs3(int node, int[] vis, int[][]adjT)
+	{
+		vis[node] = 1;
+		
+		for(int ele : adjT.get(node))
+		{
+			if(vis[ele] == -1)
+				dfs3(ele, vis, adjT);
+		}
+	}
+
+	// to find the number of strongly connected components in the graph
+	public int kosaraju(int V, ArrayList<ArrayList<Integer>> adj)
+	{
+		int[] vis = new int[V];
+		Arrays.fill(vis, -1);
+		Stack<Integer> stc = new Stack<Integer>();
+
+		//find the final time of all the node
+		for(int i=0; i<V; i++)
+		{
+			if(vis[i] == -1)
+				dfs(i, vis, adj, stc);
+		}
+	
+		ArrayList<ArrayList<Integer>> adjT = new ArrayList<>();
+		
+		for(int i=0; i<V; i++)
+			adjT.add(new ArrayList<Integer>());
+
+		for(int i=0; i<V; i++)
+		{	
+			vis[0] = -1;
+			for(int ele : adj.get(i))
+				adjT.get(ele).add(i);
+		}
+		
+		int scc = 0;
+		while(!stc.isEmpty())
+		{
+			int node = stc.pop();
+			if(vis[node] == -1)
+			{
+				scc++;
+				dfs3(node, vis, adjT);
+			}
+			
+		}
+
+		return scc;
+
+	}
+
+}
