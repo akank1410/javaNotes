@@ -1,0 +1,57 @@
+1. Comaparing 2 hashMap
+
+https://www.geeksforgeeks.org/compare-two-hashmap-objects-in-java/
+
+hmap1.equals(hmap2)
+hmap1.keySet().equals(hmap2.keySet())
+
+
+-----import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+        // New HashMap1 
+        HashMap<Integer, String> map1 = new HashMap<>(); 
+  
+        // Add Entry to map 
+        map1.put(1, "Akshay"); 
+        map1.put(2, "Bina"); 
+        map1.put(3, "Chintu"); 
+  
+        // New HashMap2 
+        HashMap<Integer, String> map2 = new HashMap<>(); 
+  
+        // Add Entry to map 
+        map2.put(3, "Chintu"); 
+        map2.put(2, "Bina"); 
+        map2.put(1, "Akshay"); 
+  
+        // New HashMap3 
+        HashMap<Integer, String> map3 = new HashMap<>(); 
+  
+        // Add Entry to map 
+        map3.put(1, "Akshay"); 
+        map3.put(2, "Binod"); 
+        map3.put(3, "Shinchain");
+
+        System.out.println(map1.values() + "  " + map2.values()); 
+
+        System.out.println(map1.keySet().equals(map2.keySet())); // true
+
+        // this gives false bcoz hmap doesn't maintains insertion order
+        System.out.println(map1.values().equals(map2.values())); // false
+
+        List<String> lis1 = new ArrayList<>(map1.values());
+        List<String> lis2 = new ArrayList<>(map2.values());
+        System.out.println(lis1.equals(lis2)); // true
+        
+     
+    }
+}
+
+// [Akshay, Bina, Chintu]  [Akshay, Bina, Chintu]
+// true
+// false
+// true
+
+-------
