@@ -35,7 +35,7 @@ class DisjointSet{
 
 		if(rank.get(ulp) < rank.get(vlp))
 			parent.set(ulp, vlp);
-		else if(rank.get(vlp) < rank.get(ulp))
+		else if(rank.get(vlp) > rank.get(ulp))
 			parent.set(vlp, ulp);
 		else
 		{
