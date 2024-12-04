@@ -1,0 +1,27 @@
+
+The height of a binary tree with 1 node is 0.
+
+Explanation:
+The height of a binary tree is defined as the number of edges on the longest path from the root node to a leaf node.
+A binary tree with only 1 node (the root) has no edges. Therefore, its height is 0.
+If you are counting the number of levels (instead of edges), then:
+
+The number of levels for a tree with 1 node is 1.
+Summary:
+Height: 
+0
+0 (based on edges).
+Levels: 
+1
+1 (based on nodes).
+
+so a binary tree of height h can have atmost : 2^(h+1) -1 nodes
+
+0 -> 1
+1 -> 2
+2 -> 4
+3 -> 8
+4 -> 16
+=> 2^5 -1 = 31
+height = 4
+level = 5
