@@ -50,3 +50,21 @@ public class GFG {
         }
     }
 }
+
+--------------------------------------------------------------------
+
+public class Main {
+    public static void main(String args[]) {
+        System.out.println("Hello World!");
+
+        HashMap<Integer, Integer> hmap = new HashMap<Integer,Integer>(){{put(1,2); put(2,3); put(3,4);}};
+
+        for(Map.Entry<Integer, Integer> hm : hmap.entrySet())
+        System.out.println(hm.getKey() + " " + hm.getValue());
+
+        System.out.println("------------");
+        System.out.println(hmap);
+        System.out.println(hmap.keySet());
+        System.out.println(hmap.values());
+    }
+}
