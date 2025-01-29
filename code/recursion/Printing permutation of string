@@ -1,0 +1,38 @@
+tc : n^n 
+sc: O(n)
+
+class Solution {
+
+    public void rec(String s, boolean[] check, StringBuffer str, Set<String> res){
+
+		if(str.length() == s.length())
+			res.add(str.toString());
+		
+		for(int i=0; i<s.length(); i++){
+
+			if(check[i]) continue;
+		
+			str.append(s.charAt(i));
+			check[i] = true;
+			rec(s, check, str, res);
+			check[i] = false;
+			str.deleteCharAt(str.length()-1);
+
+		}
+		
+	}
+
+    public ArrayList<String> findPermutation(String s) {
+        // Code here
+
+    Set<String> res = new HashSet<>();
+	
+	int n = s.length();
+
+	rec(s, new boolean[n], new StringBuffer(), res);
+
+	return new ArrayList<>(res);
+
+		
+    }
+}
