@@ -1,5 +1,10 @@
-tc : n^n 
-sc: O(n)
+A permutation is an arrangement of all members of a set into some sequence or order. For a set of size 𝑛 the number of possible permutations is given by 𝑛!
+
+n!, which is calculated as 
+𝑛× ( 𝑛-1) * (n-2) * (n-3) * (n-4) ... n*(n-1)*(n-2) * ... * 1
+
+tc : n * n! 
+sc: O(n!)
 
 class Solution {
 
