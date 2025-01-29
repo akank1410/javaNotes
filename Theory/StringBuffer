@@ -1,0 +1,31 @@
+/HOW TO USE "delete(starting ind, end idx+1)", "deleteCharAt(character_idx)"
+
+class Solution{
+
+  public static void rec(String s, boolean[] check, StringBuffer str){
+    if(str.length() == s.length())
+      System.out.println(str.toString());
+
+    for(int i=0; i<s.length(); i++){
+
+      if(check[i]) continue;
+
+      str.append(s.charAt(i));
+      check[i] = true;
+      rec(s, check, str);
+      //str.delete(str.length()-1, str.length());
+      str.deleteCharAt(str.length()-1);
+      check[i] = false;
+    }
+  }
+}
+
+public class Main {
+    public static void main(String args[]) {
+        
+          String s = "ABC";
+          int n = s.length();
+
+          Solution.rec(s, new boolean[n], new StringBuffer());
+    }
+}
