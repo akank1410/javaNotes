@@ -1,0 +1,84 @@
+https://leetcode.com/problems/lru-cache/
+TC : get()=O(1), put()=O(1)
+
+class Node{
+	
+	int key;
+	int value;
+	Node prev;
+	Node next;
+
+	public Node(int key, int value){
+		this.key = key;
+		this.value = value;
+		this.prev = null;
+		this.next = null;
+	}
+}
+
+class LRUCache {
+
+    Node head, tail;
+    int cap;
+    HashMap<Integer, Node> hmap;
+
+    public LRUCache(int capacity) {
+        
+	this.cap = capacity;
+	this.head = new Node(0,0);
+	this.tail = new Node(0,0);
+	this.head.next = tail; this.tail.prev = head;
+	hmap = new HashMap<>();
+    }
+    
+    public int get(int key) {
+
+	if(!hmap.containsKey(key))	
+		return -1;
+	
+	Node temp = hmap.get(key);
+	remove(temp);
+	insert(temp);
+	return temp.value;        
+    }
+    
+    public void put(int key, int value) {
+	
+	Node temp;
+	if(hmap.containsKey(key)){
+		
+		temp = hmap.get(key);
+		temp.value = value;
+		remove(temp);
+	}
+	else if(hmap.size() == cap){
+		
+		temp = tail.prev;
+        remove(temp);
+		hmap.remove(temp.key);	
+		temp.key = key; temp.value = value;
+		
+	}
+	else
+		temp = new Node(key,value);
+	
+
+	insert(temp);
+	hmap.put(key, temp);
+        
+    }
+
+    void remove(Node n){
+	
+	n.next.prev = n.prev;
+	n.prev.next = n.next;	
+    }
+
+    void insert(Node n){
+	
+		n.prev = head;
+		n.next = head.next;
+		head.next = n;
+		n.next.prev = n;
+    }
+}
