@@ -1,0 +1,31 @@
+
+Reference:
+
+1. Explains 2 approach : https://www.youtube.com/watch?v=mgG5KFTvfPw&ab_channel=GregHogg
+2. Log(n) approach : https://www.youtube.com/watch?v=CjKJDloMnwE&ab_channel=Techdose
+
+
+
+TC : O(n) | SC : O(n)
+
+class Solution {
+    public int hIndex(int[] citations) {
+
+	Arrays.sort(citations);
+	int n = citations.length;
+
+	int cnt[] = new int[n+1];
+	Arrays.fill(cnt, 0);
+
+	for(int ele : citations) 
+        cnt[Math.min(n,ele)]++;
+    	
+	int c = 0;
+	for(int i=n; i>=0; i--){
+		
+		c += cnt[i];
+		if( i<= c) return i;
+	}
+        return 0;
+    }
+}
