@@ -1,0 +1,76 @@
+
+
+class Solution {
+
+    public String reverse(String s){
+
+        char[] ch = s.toCharArray();
+        char temp;
+
+        int p1 = 0, p2 = s.length()-1;
+
+        while(p1<p2){
+
+            temp = ch[p1];
+            ch[p1] = ch[p2];
+            ch[p2] = temp;
+            p1++;
+            p2--;
+        }
+        return new String(ch);
+    }
+
+    public String longestPalindrome(String s) {
+
+        int n = s.length();
+
+        int[] prev = new int[n+1];
+        prev[0] = 0;
+	int len = 0, idx_x=0, idx_y=0;
+	
+        String s2 = reverse(s);
+        System.out.println(s2);
+
+	for(int i=1; i<=n; i++){
+		int[] curr = new int[n+1];
+		curr[0] = 0;
+		for(int j=1; j<=n; j++){
+
+			if(s.charAt(i-1) == s2.charAt(j-1)){
+				curr[j] = 1 + prev[j-1];
+				if(curr[j] > len){
+				len =  curr[j];
+				idx_x = i; idx_y = j;
+				}
+            }
+			else
+				curr[j] = 0;					
+		}
+		prev = curr;
+	} 
+
+        System.out.println(len);
+        char[] res = new char[len];
+        int p1=idx_x, p2=idx_y, cnt = len-1;
+
+        while(cnt >= 0){
+
+                    res[cnt--] =  s.charAt(p1-1);
+                    p1--;
+               
+        }
+        return new String(res);
+    }
+}
+
+output:
+
+s =
+"aacabdkacaa"
+
+Use Testcase
+Stdout
+aacakdbacaa
+4
+Output
+"aaca"
