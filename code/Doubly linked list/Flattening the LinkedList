@@ -1,0 +1,88 @@
+https://workat.tech/problem-solving/practice/flatten-multi-level-linked-list
+
+/** This is the ListNode class definition
+
+class ListNode {
+	int data;
+	ListNode next;
+	ListNode down;
+
+	ListNode(int data) {
+		this.data = data;
+		this.next = null;
+		this.down = null;
+	}
+}
+**/
+
+class Solution {
+	
+	ListNode mergeList(ListNode lis1, ListNode lis2){
+		
+			if(lis1 == null) return lis2;
+			else if(lis2 == null) return lis1;
+		
+			ListNode head  = new ListNode(-1), temp = head;
+		
+			while(lis1 != null && lis2 != null){
+				
+				if(lis1.data < lis2.data){
+					temp.down = lis1;
+					lis1 = lis1.down;
+				}
+				else{
+					temp.down = lis2;
+					lis2 = lis2.down;
+				}
+				temp = temp.down;
+			}
+		
+			temp.down = lis1==null ? lis2:lis1;
+		
+		return head.down;
+	}
+	
+	ListNode flattenTheLinkedList(ListNode root) {
+		// add your logic here
+		
+		if(root == null) return null; 
+		
+		ListNode head = root, curr=root.next;
+		
+		while(curr!=null){
+			head = mergeList(head,curr);
+			curr = curr.next;
+		}
+				
+		ListNode temp = head;
+	
+		while(head.down != null){
+			head.next = head.down;
+			head.down = null;
+			head = head.next; 
+			
+		}
+		return temp;
+		
+	}
+}
+
+-----
+ flattenTheLinkedList(root):
+Let’s say:
+
+There are k top-level nodes (using next pointer),
+
+Each sublist has average length n.
+
+You are merging k sorted lists one by one:
+
+First merge: n + n = 2n
+
+Second merge: 2n + n = 3n
+
+Third merge: 3n + n = 4n
+
+...
+
+Total time: O(n + 2n + 3n + ... + kn) = O(n * k * (k + 1)/2) = O(n * k²)
