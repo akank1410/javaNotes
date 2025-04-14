@@ -1,0 +1,95 @@
+// https://www.geeksforgeeks.org/problems/alien-dictionary/1
+
+class Solution {
+    
+    private String topo(HashMap<Integer, ArrayList<Integer>> hmap, HashMap<Integer, Integer> dist){
+        
+        Queue<Integer> q = new LinkedList<>();
+        StringBuffer res = new StringBuffer();
+        
+        for(int idx : hmap.keySet()){
+           for(int ele : hmap.get(idx)){
+               dist.put(ele, dist.get(ele)+1 );
+           }
+        }
+        
+        for(int idx : hmap.keySet()){
+            
+            if(dist.get(idx) == 0){
+            q.offer(idx);
+            res.append((char)(idx+'a'));}
+            
+        }
+        
+        int cnt = 0;
+        while(!q.isEmpty()){
+            
+            int node = q.poll();
+            cnt++;
+            
+            for(int N : hmap.get(node)){
+                
+                dist.put(N, dist.get(N)-1);
+                
+                if(dist.get(N) == 0){
+                    q.offer(N);
+                    res.append((char)(N+'a'));
+                }
+            }
+        }
+        
+        return res.toString();
+        
+        
+    }
+    
+    public String findOrder(String[] words) {
+        // code here
+        
+        int n = words.length;
+        HashMap<Integer, ArrayList<Integer>> hmap = new HashMap<>();
+        HashMap<Integer, Integer> dist = new HashMap<>();
+        
+        // ["dddc", "a", "ad", "ab", "b", "be", "cd", "cded"] => dabcd not dabc
+        
+       // declaring and initializing all keys and its  default value
+        for(String str : words){
+            for(char c : str.toCharArray()){
+                if(!hmap.containsKey(c-'a')){
+                    hmap.put((c-'a'), new ArrayList<>());
+                    dist.put((c-'a'), 0);
+                }
+            }
+        }
+       
+          // building graph 
+        for(int i=0; i<n-1; i++){
+            
+            String str1 = words[i], str2 = words[i+1];
+            int p1=0, len = Math.min(str1.length(), str2.length());
+            
+            while(p1<len && str1.charAt(p1) == str2.charAt(p1)){
+                p1++;
+            }
+            
+            if(p1==len){
+                
+                if(str1.length() > str2.length()) // ["abc", "ab"]
+                    return "";
+                    
+                    continue;
+                
+            }
+        
+            hmap.get(str1.charAt(p1)-'a').add(str2.charAt(p1)-'a');
+            
+        }
+        
+        String res = topo(hmap, dist);
+       
+        if(res.length() < hmap.size())
+            return "";
+   
+        return res;
+    }
+}
