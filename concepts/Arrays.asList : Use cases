@@ -1,0 +1,49 @@
+When to use Arrays.asList()
+
+String[] arr = {"a", "b", "c"};
+List<String> list = Arrays.asList(arr);
+// list = ["a", "b", "c"]
+
+Integer[] arr = {1,2,3};
+List<Integer> list = Arrays.asList(arr);
+-----
+
+Not use with primitive arrays(int[], double[], etc)
+
+int[] arr = {1,2,3};
+List<int[]> list = Arrays.asList(arr);
+// This is a List of one element: the int[] itself!
+=> This gives a List<int[]> with one element, not a list of Integer
+-------
+
+⚠️ Limitations of Arrays.asList():
+It returns a fixed-size list backed by the original array.
+
+So you can’t add or remove elements.
+
+But you can modify existing elements.
+
+java
+Copy code
+List<String> list = Arrays.asList("a", "b");
+list.set(0, "z"); // OK
+list.add("c");    // ❌ Throws UnsupportedOperationException
+-------------------
+
+✅ Use Cases:
+Goal	Should you use Arrays.asList()?
+Convert String[] to List	✅ Yes
+Convert Integer[] to List	✅ Yes
+Convert int[] to List<Integer>	❌ No — use loop or stream
+Need a modifiable list	❌ Wrap it: new ArrayList<>(...)
+Just want to iterate, no changes	✅ Yes
+-------------------
+🧠 Tip:
+If you need a modifiable list, wrap it:
+
+java
+Copy code
+List<String> modifiable = new ArrayList<>(Arrays.asList("a", "b"));
+modifiable.add("c");  // ✅ Works now
+
+
