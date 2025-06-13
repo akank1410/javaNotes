@@ -9,6 +9,12 @@ sorting 2d array : int[][] arr
 Arrays.sort(arr, (a,b) -> a[0]-b[0]);
 Arrays.sort(arr, (a,b) -> Integer.compare(a[0],b[0]));
 
+Converting list to array
+ArrayList<Integer> arr = new ArrayList<>() -> int[]
+
+int[] res = arr.toArray();  // this will not work because Interger[] res = arr.toArray() since Integer is a wrapper class
+--------------------------
+
 
 int[][] arr; int[] newInterval;
 
