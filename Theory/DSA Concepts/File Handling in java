@@ -1,0 +1,147 @@
+Java provides robust file handling capabilities through java.io.package.
+File handling enables reading and writing data to and from files, making it essential for creating applications that need persistent storage.
+
+STREAM IN JAVA
+
+File operations injava are categorized into two main types based on the data type they handle:
+
+1. Byte Stream
+
+Byte streams handle data in raw byte format, making then ideal for handling binary files
+such as images, audio, and video.
+
+    => FileInputStream : Reads bytes from a file
+    => FileOutputStream : Writes bytes to a file
+
+Features of Byte Streams:
+
+Operate on raw binary data.
+Use FileInputStream and FileOutputStream classes for reading and writing files.
+Suitable for non-text files where preserving data integrity is critical.
+
+2. Charater Stream
+
+Character streams handle data in character format, which is best suited for handling text files.
+  -> FileReader : Reads characters from a file
+  => FileWriter : Writes characters to a file
+
+Features of Character Streams:
+
+Handle textual data and automatically account for character encoding.
+Use FileReader and FileWriter classes for reading and writing text files.
+Ideal for scenarios where data needs to be human-readable.
+
+Note : Byte streams are better suited for handling binary data, whereas character streams are ideal for text data.
+
+File Class and Its Methods
+The File class in java.io package provides several useful methods for handling files and directories.
+
+Common File Class Methods:
+
+Method	Description	Return Type
+canRead()	Checks if a file is readable.	boolean
+canWrite()	Checks if a file is writable.	boolean
+createNewFile()	Creates a new file if it doesn't exist.	boolean
+delete()	Deletes a file.	boolean
+exists()	Checks if a file exists.	boolean
+getName()	Returns the file name.	String
+getAbsolutePath()	Returns the file's absolute path.	String
+length()	Returns the length of the file in bytes.	long
+
+
+Byte Stream Example
+------------------
+(reading & writing a file using byte streams:
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class ByteStreamEx{
+
+  public static void main(String[] args){
+
+      FileInputStream in = null;
+      FileOutputStream out = null;
+
+      try{
+          in = new FileInputStream("input.txt");
+          out = new FileOutputStream("output.txt");
+
+          int c;
+          while((c = in.read()) != -1) {
+            out.write(c);
+          }
+       } catch (IOException e){
+          ex.printStackTrace();
+        } finally {
+
+              try{
+                      if(in != null){
+                         in.close();
+                      }
+                      if(out != null)
+                          out.close();
+               } catch (IOException e){
+                  ex.printStackTrace();
+               }
+
+        }
+  }
+}
+
+Explanation:
+
+Opening Streams: FileInputStream and FileOutputStream are used to read from and write to files.
+Reading Data: The read() method reads byte by byte until the end of the file.
+Writing Data: The write() method writes each byte to the output file.
+Exception Handling: Ensures proper error messages in case of file operation failures.
+Closing Streams: Always close streams using close() to release system resources.
+
+-------------------------------------------
+Character Stream Example
+This example demonstrates file handling using character streams:
+
+mport java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class CharacterStreamExample {
+    public static void main(String[] args) {
+        FileReader in = null;
+        FileWriter out = null;
+
+        try {
+            in = new FileReader("input.txt");
+            out = new FileWriter("output.txt");
+            
+            int c;
+            while ((c = in.read()) != -1) {
+                out.write(c);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+                if (out != null) {
+                    out.close();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+}
+
+Explanation:
+
+Opening Streams: FileReader and FileWriter handle text-based file input and output.
+Reading Data: The read() method reads character by character.
+Writing Data: The write() method writes each character to the output file.
+Exception Handling: Ensures proper error handling.
+Closing Streams: Always close streams to avoid resource leaks.
+
+
