@@ -1,0 +1,60 @@
+Eg 1 : USING LAMBDA EXPRESSION
+
+List<Integer> lis = Arrays.asList(10, 20, 30, 40, 50);
+// forEach() method takes the lambda expression
+lis.forEach(x -> System.out.print(x + " "));
+
+// 10 20 30 40 50
+
+-----------------------
+
+Eg 2 : REPLACING LAMBDA WITH METHOD REFERENCE
+
+List<Integer> lis = new Arrays.asList(100, 200, 300, 400, 500);
+lis.forEach(System.out::println);
+
+100
+200
+300
+400
+500
+
+-----------------------------------
+
+Eg 3 :  Static method reference
+
+class abc {
+
+  //static method
+  public static void square(Integer x){
+    System.out.println(x*x);
+  }
+
+public static void main(String args[]){
+
+  List<Integer> lis = Arrays.asList(1,2,3,4,5);
+lis.forEach(abc::square);
+}
+
+}
+
+---------------------------------------
+
+Eg 4 : Method Reference with Arrays.equals()
+
+        String a[] = {"GfG", "IDE", "Courses"};
+        String b[] = {"gfg", "ide", "courses"};
+
+        // Case-insensitive comparison
+        if(Arrays.equals(a,b, String::compareToIgnoreCase))
+          System.out.println("Yes");
+        else
+          System.out.println("No");
+
+---------------------------------------
+
+EQUIVALENT LAMBDA EXPRESSION
+
+Arrays.equals(a, b, (x1, x2)-> String.compareToIgnoreCase(x1,x2));
+
+The String::compareToIgnoreCase method reference makes the comparison concise and reusable, avoiding the need to explicitly write a comparator.
