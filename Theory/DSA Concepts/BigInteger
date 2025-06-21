@@ -1,0 +1,15 @@
+BigInteger a = new BigInteger("123");
+BigInteger b = BigInteger.valueOf(123);
+int c = 100;
+BigInteger d = BigInteger.valueOf(c);
+int add = a.add(b);
+int mult = a.multiply(b);
+int div = a.divide(b);
+int sub = a.sub(b);
+int intVal = a.intValue(); //Converts BigInteger to an int. (Ensure the value fits within int limits.)
+long longVal = a.longValue(); //Converts BigInteger to a long.
+String strValue = a.toString(); //Converts BigInteger to a String.
+
+BigInteger f = BigInteger.ONE;
+
+BigInteger mod = a.mod(c); // it will give ArithmeticException: BigInteger: modulus not positive if the passed value is less than 0
