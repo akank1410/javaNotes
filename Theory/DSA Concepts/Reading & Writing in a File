@@ -1,0 +1,93 @@
+Reading & writing to a file can be accomplished using the FileReader & FileWriter classes,
+
+1. Writing to a File
+
+=> To write data to a file in java, we can use the FileWriter class,
+   which allows us to write character data to files
+=> The write() method of the FileWriter class writes data to the file.
+=> Once you're done writing, it's important to close the FileWriter to ensure all the
+    data is saved propery & the resources are released.
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class WriteToFile{
+
+    pubic static void main(String[] args){
+
+          try{
+              // Specify the file path
+              FileWriter writer  = new FileWriter("D:\\File.txt");
+
+              // Write data to the file
+              writer.write("Java is a programming language");
+
+              // Cloase the writer
+              writer.close();
+
+              System.out.println("Successfully wrote to the file.");
+            
+          } catch (IOException e){
+              System.out.println("An error occured.");
+              e.printStackTrace();
+          }
+    }
+}
+
+Explanation:
+
+We create a FileWriter object pointing to the file D:\File.txt.
+We use the write() method to write the string "Java is a programming language" to the file.
+After writing, we call the close() method to ensure the data is saved and the resources are released.
+If an IOException occurs (such as the file being inaccessible), it is caught, and an error message is printed.
+
+-------------------------------------------------------
+
+2. Reading from a File
+
+Reading data from a file can be achieved using various methods,
+one of which is the Scanner class. T
+he Scanner class is versatile and can read different types of data, including strings, integers, and more, from files. 
+The hasNextLine() method checks if there is more data to read, and 
+the nextLine() method retrieves the next line from the file.
+
+import java.in.File;
+import java.util.Scanner;
+
+public class ReadFromFile {
+
+    public static void main(String[] args){
+
+          try{
+
+            // Specify the file path
+              File ibj = new File("D:\\File.txt");
+
+            //Create a scanner object to read the file
+              Scanner myReader = new Scanner(obj);
+
+            // Read the file line by line
+            while(myReader.hasNextLine()){
+                String data = myReader.nextLine();
+                System.out.println(data);
+            }
+
+            // close the reader
+            myReader.close();
+          } catch (Exception e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+  Explanation:
+
+We create a File object pointing to the file D:\File.txt.
+A Scanner object is created to read the contents of the file.
+We use a while loop along with the hasNextLine() method to check if there is more content to read. The nextLine() method reads one line at a time.
+After all lines are read, the close() method is called to release the resources.
+If an exception occurs (such as the file not being found), it is caught, and an error message is printed.
