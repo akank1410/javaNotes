@@ -1,0 +1,50 @@
+Exception handling helpes in 
+1. Managing the runtime error
+2. Maintain the flow of the application
+3. It enable developers to handle the unexpected situations gracefully without crashing the program.
+
+Exception is an event that interrupts the normal flow of the program execution.
+
+Exceptions are classified into 2 categories
+1. Checked exceptions : are thise that the compiler requires the programmer to handle explicitly
+2. Unchecked exceptions : are those that do not require explicit handling
+
+try Block : Contains the code that may throw exceptions
+catch Block : Catches and handes speific exceptions. Multiple catch bocks can be used to handle different types of exceptions.
+finaly Block : Always executed regardless of whether an exception is thrown or handled.
+               It is typically used for resource cleanup like closing files or database connections.
+
+-------------------------
+ Eg 1 : HANDLING FileNotFoundException
+try{
+  // Attempt to open the file
+    Scanner in = new Scanner(new File("test.in"))
+  ) {
+      // If successful, this statement is executed
+      System.out.println("Exit main()");
+  } catch(FileNotFoundException ex){
+
+     //If file is not found, this block executes
+    System.out.println("File not found caught ... ");
+  } finally {
+
+    // Always executes, regardless of exception
+    System.out.println("finally-block runs regardless of the state of exception");
+
+-------------------------------
+
+Eg 2 : Handling Input Errors
+
+  public static void main(String args[]){
+
+    try{
+        int a = Integer.parseInt(args[0]);
+        int b = Integer.parseInt(args[1]);
+        int sum = a + b;
+        System.out.println("Addition is: " + sum);
+    } catch (ArrayIndexOutOfBoundsException s){
+         System.out.println("Error: Insufficient input argumnts. ");
+    } catch (NumberFormatException e){
+         System.out.println("Error: Invalid number format.");
+    }
+  }
