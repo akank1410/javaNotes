@@ -71,3 +71,70 @@ pubic abc {
  }
 
 }
+
+-------------------------------
+
+Eg 4 : Declaring Multiple Exceptions
+=> A method can declare multiple exceptions in its signature using the throws keyword.
+=> This is helpful when the method may excounter different types of exceptions.
+
+public void methodD() throws XException, YException {
+
+  if(someCondition)
+      throw new XException("XException occured");
+  if(anotheCondition)
+      throw new YException("YException occured");
+
+}
+
+-------------------------------
+
+Eg 5 : CatchingExceptions Using try-catch
+
+ public void methodC(){
+
+    try{
+        methodD(); // calls a method that declares XException and YException
+    } catch (XExeception ex){
+        // Exception handler for XException
+        System.out.println("Handled XException: " + ex.getMessage());
+    } catch (YException ex){
+        // Exception handle for YException
+        System.out.println("Handled YException: " + ex.getMessage());
+    } finally{
+        // Cleanup code that always runs
+        System.out.println("Finally block executed");
+    }
+  }
+
+-------------------------------
+
+Eg 6 :  Combining throw and throws
+
+
+public class abc{
+
+    public static void main(String[] args){
+
+      try{
+        methodA();
+        System.out.println("Exit TRY of main()");
+      } catch(ArithmeticException ex){
+         System.out.println("ArithmeticException caught...");
+        /* Prints stack trace for debugging */
+        ex.printStackTrace();
+      }
+      System.out.println("Exit main() successfully");
+   }
+
+   public static void methodA() throws ArithmeticException{
+
+    int a = 5, b = 0;
+    if(b == 0)
+      throw new ArithmeticException("Division by zero");
+
+    int c = a/b;
+    System.out.println("Result: " + c);
+    System.out.println("Exit methodA()");
+   }
+}
