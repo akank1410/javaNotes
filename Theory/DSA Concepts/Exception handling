@@ -138,3 +138,57 @@ public class abc{
     System.out.println("Exit methodA()");
    }
 }
+
+-----------------------------------------
+
+Eg 7 : USER-DEFINED EXCEPTIONS
+
+// User-defined exception class (Checked Exception)
+class InvalidBalanceException extends Exception{
+  
+    // Constructor to pass custom error message
+    public InvalidBalanceException(String message){
+        super(message);
+    }
+}
+
+class abc{
+
+  public static void main(String[] args){
+
+    int balance;
+
+    try{
+
+        // Parse balance from command-line arguments
+        balance = Integer.parseInt(args[0]); // May throw NumberFormatException
+
+        // Call a method that may throw a user-defined exception
+        updateBalance(balance);
+
+    } catch (InvalidBalanceException ex){
+        System.out.println("Caught in catch of InvalidBalanceException");
+        ex.printStackTrace();
+
+    } catch (NumberFormatException ex){
+        System.out.println("Caught in catch of NumberFormatException");
+
+    } catch (ArrayIndexOutOfBoundsException ex){
+        System.out.println("Caught in catch of ArrayIndexOutOfBoundsException");
+
+    } catch (Exception ex){
+        System.out.println("Caught in catch of Parent Exception");
+
+    }
+
+    System.out.println("Main methid executed successfully.");
+ }
+
+  // Method to update balance, throws InvalidBalanceException if balance < 0
+  public static voi updateBalance(int balance) throws InvalidBalanceException{
+      if(balance < 0)
+          throw new InvalidBalanceException("Account balance cannot br less than zero.");
+
+      System.out.println("No exception occured in updateBalance() method.");
+  }
+}
