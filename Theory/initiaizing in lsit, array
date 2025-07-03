@@ -1,3 +1,39 @@
+Initializing an array
+
+int[] a = new int[5];
+a[0] = 1; a[1] = 2;
+
+int[] b = {1,2,3,4,5};
+
+Jagged array : It is an array of arrays where of member arrays can be different sizes,
+i.e., we can create a 2-D array but with a variable number of columns in each row.
+
+declaration snd initialization of Jagged array
+=>  data_type array_name[][] = new data_type[n][];
+array_name[] = new data_type[n1];
+array_name[] = new data_type[n2];
+array_name[] = new data_type[n3];
+...
+array_name[] = new data_type[nk];
+
+n = Total no. of rows;  ni = number of columns in i-th row
+
+ALTERNATIVE, WAYS TO INITIALIZE A JAGGED ARRAY
+int arr[][] = new int[][] {new int[]{10,20,30,40}, new int[]{50, 60, 70, 80}, new int[]{110, 120}};
+
+int[][] arr_name = { new int[] { 10, 20, 30, 40 },
+new int[] { 50, 60, 70, 80, 90, 100 },
+new int[] { 110, 120 } };
+
+OR
+
+int[][] arr_name = { { 10, 20, 30, 40 },
+{ 50, 60, 70, 80, 90, 100 },
+{ 110, 120 } };
+
+
+-----------------------------------------------------------------------------------------
+
 1. return type int[]
 
 return (new int[]{1,2});
