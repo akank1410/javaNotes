@@ -1,1 +1,3 @@
 Encapsulation ensures that data is protected from unauthorized access or modification and promotes maintainability by allowing changes in internal implementations without affecting external code.
+
+The super keyword is used to call a constructor or method from the parent class or to access parent class members when there is a conflict.
