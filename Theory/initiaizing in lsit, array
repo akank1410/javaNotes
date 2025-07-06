@@ -29,6 +29,8 @@ The toArray() method of the ArrayList is used to convert the list to static arra
 ArrayList < Integer> lst = new ArrayList<>();
 System.out.println(lst.toArray()[0]);
 
+The indexOf() method returns -1 when the element is not found in the list.
+
 --------------------------------------------------------------------------
 The this keyword refers to the current instance of the class and is useful when referring to
 instance variables and methods.
