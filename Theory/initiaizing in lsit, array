@@ -1,5 +1,30 @@
 The ListIterator allows both forward and backward traversal, unlike the regular Iterator, which only supports forward traversal.
 
+ensureCapacity() ensures the ArrayList has enough capacity to hold the specified number of elements without triggering resizing operations.
+
+import java.io.*;
+import java.util.*;
+
+class GFG {
+    public static void main(String[] args)
+    {
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        Iterator<Integer> it = list.iterator();
+        while (it.hasNext()) {
+            int x = it.next();
+            if (x == 20) {
+                it.remove();
+            }
+        }
+        System.out.println(list);
+    }
+}
+
+// [10,30]
+--------------------------------------------------------------------------
 The this keyword refers to the current instance of the class and is useful when referring to
 instance variables and methods.
 
