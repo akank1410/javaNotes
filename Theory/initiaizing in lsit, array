@@ -1,4 +1,4 @@
-The ListIteator allows both forward and backward traversal, unlike the regular Iterator, which only supports forward traversal.
+The ListIterator allows both forward and backward traversal, unlike the regular Iterator, which only supports forward traversal.
 
 The this keyword refers to the current instance of the class and is useful when referring to
 instance variables and methods.
