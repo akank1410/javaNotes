@@ -24,6 +24,11 @@ class GFG {
 }
 
 // [10,30]
+
+The toArray() method of the ArrayList is used to convert the list to static array 
+ArrayList < Integer> lst = new ArrayList<>();
+System.out.println(lst.toArray()[0]);
+
 --------------------------------------------------------------------------
 The this keyword refers to the current instance of the class and is useful when referring to
 instance variables and methods.
