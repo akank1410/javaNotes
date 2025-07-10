@@ -1,3 +1,7 @@
+what is a functional interface?
+ interface which has only 1 abstract function.
+
+
 Eg 1 : USING LAMBDA EXPRESSION
 
 List<Integer> lis = Arrays.asList(10, 20, 30, 40, 50);
