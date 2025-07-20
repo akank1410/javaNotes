@@ -1,0 +1,9 @@
+Both Merge sort and Insertion sort can be used for linked lists. The slow random-access performance of a linked list makes other algorithms (such as quicksort) perform poorly, 
+and others (such as heapsort) completely impossible. Since worst case time complexity of Merge Sort is O(nLogn) and Insertion sort is O(n^2), merge sort is preferred. 
+
+
+Cardinality and membership are definitely not the slowest one. For cardinality, just count the number of nodes in a list. For membership, just traverse the list and look for a match
+For getting intersection of L1 and L2, search for each element of L1 in L2 and print the elements we find in L2. 
+There can be many ways for getting union of L1 and L2. One of them is as follows 
+a) Print all the nodes of L1 and print only those which are not present in L2. 
+b) Print nodes of L2.
