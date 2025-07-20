@@ -1,0 +1,54 @@
+The algorithms can be classified as follows from the best-to-worst performance (Running Time Complexity): 
+
+▪ A logarithmic algorithm - O(logn) 
+Runtime grows logarithmically in proportion to n. 
+▪ A linear algorithm - O(n) 
+Runtime grows directly in proportion to n. 
+▪ A superlinear algorithm - O(nlogn) 
+Runtime grows in proportion to n. 
+▪ A polynomial algorithm - O(nc) 
+Runtime grows quicker than previous all based on n. 
+▪ A exponential algorithm - O(cn) 
+Runtime grows even faster than polynomial algorithm based on n. 
+▪ A factorial algorithm - O(n!) 
+Runtime grows the fastest and becomes quickly unusable for even 
+small values of n.   
+
+Where, n is the input size and c is a positive constant. 
+
+--------------------------------------------------------------------------------------------------------------------
+
+Algorithmic Examples of Runtime Analysis: 
+Some of the examples of all those types of algorithms (in worst-case scenarios) are mentioned below: 
+ 
+
+▪ Logarithmic algorithm - O(logn) - Binary Search. 
+▪ Linear algorithm - O(n) - Linear Search. 
+▪ Superlinear algorithm - O(nlogn) - Heap Sort, Merge Sort. 
+▪ Polynomial algorithm - O(n^c) - Strassen’s Matrix Multiplication, Bubble Sort, Selection Sort, Insertion Sort, Bucket Sort. 
+▪ Exponential algorithm - O(c^n) - Tower of Hanoi. 
+▪ Factorial algorithm - O(n!) - Determinant Expansion by Minors, Brute force Search algorithm for Traveling Salesman Problem. 
+
+▪ Ideal algorithm - O(1) - Linear Search, Binary Search,
+    Bubble Sort, Selection Sort, Insertion Sort, Heap Sort, Shell Sort.
+▪ Logarithmic algorithm - O(log n) - Merge Sort.
+▪ Linear algorithm - O(n) - Quick Sort.
+▪ Sub-linear algorithm - O(n+k) - Radix Sort.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+Algorithms Cheat Sheet
+
+Algorithm	Best Case	Average Case	Worst Case
+Selection Sort	O(n^2)	O(n^2)	O(n^2)
+Bubble Sort	O(n)	O(n^2)	O(n^2)
+Insertion Sort	O(n)	O(n^2)	O(n^2)
+Tree Sort	O(nlogn)	O(nlogn)	O(n^2)
+Radix Sort	O(dn)	O(dn)	O(dn)
+Merge Sort	O(nlogn)	O(nlogn)	O(nlogn)
+Heap Sort	O(nlogn)	O(nlogn)	O(nlogn)
+Quick Sort	O(nlogn)	O(nlogn)	O(n^2)
+Bucket Sort	O(n+k)	O(n+k)	O(n^2)
+Counting Sort	O(n+k)	O(n+k)	O(n+k)
+ 
+
