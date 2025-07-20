@@ -11,3 +11,5 @@ b) Print nodes of L2.
 Yes, it is possible to implement a doubly linked list using a single pointer per node, by storing the XOR of the addresses of the previous and next nodes.
 
 OR linked lists are a memory-efficient representation of linked lists. They store the XOR combination of the addresses of the previous and next nodes, reducing the memory overhead compared to traditional linked lists.
+
+https://www.geeksforgeeks.org/dsa/xor-linked-list-a-memory-efficient-doubly-linked-list-set-1/
