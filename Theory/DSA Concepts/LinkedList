@@ -7,3 +7,7 @@ For getting intersection of L1 and L2, search for each element of L1 in L2 and p
 There can be many ways for getting union of L1 and L2. One of them is as follows 
 a) Print all the nodes of L1 and print only those which are not present in L2. 
 b) Print nodes of L2.
+
+Yes, it is possible to implement a doubly linked list using a single pointer per node, by storing the XOR of the addresses of the previous and next nodes.
+
+OR linked lists are a memory-efficient representation of linked lists. They store the XOR combination of the addresses of the previous and next nodes, reducing the memory overhead compared to traditional linked lists.
